@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230618104627">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230618143458">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,20 +22,126 @@
 					</a>
 					<nav class="header-bar">
 						<ul class="header-bar__list">
-							<li class="header-bar__item">
+							<li class="header-bar__item login-menu">
 								<button class="button header-bar__button">
 									<span>VeloTraining</span>
 									<svg class="icon">
 										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
 									</svg>
 								</button>
+								<div class="login-menu__menu">
+									<ul class="login-menu__list">
+										<li>
+											<a href="#" class="login-menu__link">
+												Добавить компанию
+											</a>
+										</li>
+									</ul>
+								</div>
 							</li>
-							<li class="header-bar__item">
+							<li class="header-bar__item user-drop">
 								<a href="#" class="header-bar__link">
 									<svg class="icon header-bar__icon">
 										<use xlink:href="img/icons/sprite.svg#i-user"></use>
 									</svg>
 								</a>
+								<div class="user-drop__inner">
+									<div class="user-drop__content">
+
+										<div class="user-drop__column">
+											<ul class="user-drop__info">
+												<li class="user-drop__name">Барабашевский Владимир</li>
+												<li class="user-drop__mail">velotraining@yandex.ru</li>
+												<li class="user-drop__position">
+													<a href="#">
+														Управляющий
+													</a>
+												</li>
+											</ul>
+											<ul class="user-drop__menu">
+												<li class="user-drop__item">
+													<a href="#" class="user-drop__link">
+														<svg class="icon user-drop__icon">
+															<use xlink:href="img/icons/sprite.svg#i-setting"></use>
+														</svg>
+														<span>Настройки</span>
+													</a>
+												</li>
+												<li class="user-drop__item">
+													<a href="#" class="user-drop__link">
+														<svg class="icon user-drop__icon">
+															<use xlink:href="img/icons/sprite.svg#i-app"></use>
+														</svg>
+														<span>Приложение</span>
+													</a>
+												</li>
+												<li class="user-drop__item user-drop__item_lang">
+													<a href="#" class="user-drop__link">
+														<svg class="icon user-drop__icon">
+															<use xlink:href="img/icons/sprite.svg#i-lang"></use>
+														</svg>
+														<span>Язык</span>
+														<svg class="icon user-drop__icon user-drop__icon_arrow">
+															<use xlink:href="img/icons/sprite.svg#i-user-arrow"></use>
+														</svg>
+													</a>
+													<div class="languages">
+														<div class="languages__inner">
+															<ul class="languages__list user-drop__content">
+																<li>
+																	<a href="#" class="user-drop__link">
+																		<svg class="icon languages__icon">
+																			<use xlink:href="img/icons/sprite.svg#i-rus"></use>
+																		</svg>
+																		<span>Русский</span>
+																		<svg class="icon languages__icon languages__icon_select">
+																			<use xlink:href="img/icons/sprite.svg#i-select-menu">
+																			</use>
+																		</svg>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" class="user-drop__link">
+																		<svg class="icon languages__icon">
+																			<use xlink:href="img/icons/sprite.svg#i-eng"></use>
+																		</svg>
+																		<span>English</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" class="user-drop__link">
+																		<svg class="icon languages__icon">
+																			<use xlink:href="img/icons/sprite.svg#i-china">
+																			</use>
+																		</svg>
+																		<span>中文 (简体)</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#" class="user-drop__link">
+																		<svg class="icon languages__icon">
+																			<use xlink:href="img/icons/sprite.svg#i-turkiye">
+																			</use>
+																		</svg>
+																		<span>Türkçe</span>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<li class="user-drop__item">
+													<a href="#" class="user-drop__link">
+														<svg class="icon user-drop__icon">
+															<use xlink:href="img/icons/sprite.svg#i-exit"></use>
+														</svg>
+														<span>Выход</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 							</li>
 							<li class="header-bar__item">
 								<a href="#" class="header-bar__link">
@@ -58,12 +164,22 @@
 									</svg>
 								</a>
 							</li>
-							<li class="header-bar__item">
+							<li class="header-bar__item news-drop">
 								<a href="#" class="header-bar__link">
 									<svg class="icon header-bar__icon">
 										<use xlink:href="img/icons/sprite.svg#i-mouthpiece"></use>
 									</svg>
 								</a>
+								<div class="news-drop__inner">
+									<ul class="news-drop__list">
+										<li>
+											<a href="#" class="news-drop__link">Новости</a>
+										</li>
+										<li>
+											<a href="#" class="news-drop__link">Журнал</a>
+										</li>
+									</ul>
+								</div>
 							</li>
 						</ul>
 					</nav>
@@ -1835,7 +1951,7 @@
 			</button>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20230618104627"></script>
+	<script src="js/app.min.js?_v=20230618143458"></script>
 </body>
 
 </html>
