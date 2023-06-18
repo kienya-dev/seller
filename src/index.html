@@ -1,150 +1,1384 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Верстка «NEW_PROJECT_NAME»</title>
-	</head>
-	<body>
-		<div class="rootpage">
-			<h1>Верстка «NEW_PROJECT_NAME»</h1>
-			<div class="rootpage__info">
-				Особенности проекта
-			</div>
-			<h2>Готовые страницы:</h2>
-			<ol class="rootpage__list">
-				<li><a target="_blank" href="home.html">Главная</a></li>
-			</ol>
-			<h2>Попапы:</h2>
-			<ol class="rootpage__list">
-				<li><a target="_blank" href="home.html#"></a></li>
-			</ol>
-			<div class="rootpage__tnx">
-				<h2>Спасибо за заказ!</h2>
-				<p>Буду рад (а) хорошему отзыву.</p>
-				<p>Обращайтесь еще!</p>
-			</div>
-			<div class="rootpage__contacts">
-				<h2>Мои контакты:</h2>
-				<p>Почта: <a href="mailto:email@gmail.com">email@gmail.com</a></p>
-				<p>Телефон: <a href="tel:8800800800">8 800 800 800</a></p>
-				<p>Соц. сеть: <a href="">ссылка на соц. сеть</a></p>
-			</div>
-		</div>
-	</body>
-	<style>
-		@charset "UTF-8";
-		@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,700&display=swap");
-		* ,*::before, *::after {
-			padding: 0px;
-			margin: 0px;
-			border: 0px;
-			box-sizing: border-box; 
-		}
-		html, body {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			min-width: 320px;
-			width: 100%;
-			color: #fff;
-			background-color: #5e5373;
-		}
-		body {
-			font-family: Montserrat;
-			font-size: 100%;
-			line-height: 1;
-			font-size: 1rem;
-		}
-		a {
-			text-decoration: underline;
-			color: #ebe691
-		}
-		a:visited {
-			text-decoration: underline;
-			color: #aaa768;
-		}
-			a:hover {
-			text-decoration: none;
-		}
-		ul li {
-			list-style: none;
-		}
-		img {
-			vertical-align: top;
-		}
-		.wrapper {
-			width: 100%;
-			min-height: 100%;
-			overflow: hidden;
-		}
-		.rootpage{
-			padding: 30px;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-		}
-		@media (max-width: 767px) {
-			.rootpage{
-				padding:30px 15px;
-			}
-		}
-		h1 {
-			color: #ebe691;
-			font-size: 2.5rem;
-			margin: 0px 0px 1.25rem 0px;
-		}
-		@media (max-width: 767px) {
-			h1 {
-				font-size: 1.85rem;
-				margin: 0px 0px 1.25rem 0px;
-			}
-		}
-		h2 {
-			color: #ebe691;
-			font-size: 1.25rem;
-			margin: 0px 0px 1rem 0px;
-		}
-		@media (max-width: 767px) {
-			 h2 {
-				font-size: 1.125rem;
-				margin: 0px 0px 1rem 0px;
-			}
-		}
-		.rootpage__info{
-			line-height: 140%;
-			margin: 0px 0px 1.5rem 0px;
-		}
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Главная"
+})
 
-		.rootpage__list{
-			margin: 0px 0px 2.25rem 1.25rem;
-		}
-		.rootpage__list li:not(:last-child){
-			margin: 0px 0px 15px 0px;
-		}
-		.rootpage__contacts,
-		.rootpage__tnx{
-			border-radius: 200px;
-			padding: 20px 65px;
-			line-height: 140%;
-		}
-		@media (max-width: 767px){
-		.rootpage__contacts,
-		.rootpage__tnx{
-			border-radius:40px;
-			padding: 20px;
-		}
-		}
-		.rootpage__contacts{
-			background: #32b5a4;
-			
-		}
-		.rootpage__contacts a{
-			color: #ebe691;
-		}
-		.rootpage__tnx{
-			background: #c22d63;
-			margin: 0px 0px 1rem 0px;
-		}
-	</style>
+<body class="preload">
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page page_main">
+			<section class="main-wall">
+				<div class="main-wall__container">
+					<div class="chart main-wall__box main-wall__box_big">
+						<div class="chart__head">
+							<div class="box-head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Заказано товаров
+								</h3>
+								<button class="button box-head__button" data-head-menu="chart">
+									<span>в <span data-what="рублях">рублях</span> за <span data-time="14">
+											14 дней</span></span>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+
+								<div class="head-menu head-menu_chart">
+									<div class="head-menu__box">
+										<div class="head-menu__caption">
+											<span>Единица измерения</span>
+										</div>
+										<ul class="head-menu__list">
+											<li>
+												<button class="button head-menu__button" data-content="рублях">
+													<span>Рубли</span>
+													<svg class="icon head-menu__select head-menu__select_active">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+											<li>
+												<button class="button head-menu__button" data-content="штуках">
+													<span>Штуки</span>
+													<svg class="icon head-menu__select">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+										</ul>
+									</div>
+									<div class="head-menu__box">
+										<div class="head-menu__caption">
+											<span>Период</span>
+											<svg class="icon">
+												<use xlink:href="img/icons/sprite.svg#i-interval"></use>
+											</svg>
+										</div>
+										<ul class="head-menu__list">
+											<li>
+												<button class="button head-menu__button" data-interval="неделю">
+													<span>Неделя</span>
+													<svg class="icon head-menu__select">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+											<li>
+												<button class="button head-menu__button" data-interval="7 дней">
+													<span>7 дней</span>
+													<svg class="icon head-menu__select">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+											<li>
+												<button class="button head-menu__button" data-interval="14 дней">
+													<span>14 дней</span>
+													<svg class="icon head-menu__select head-menu__select_active">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+											<li>
+												<button class="button head-menu__button" data-interval="28 дней">
+													<span>28 дней</span>
+													<svg class="icon head-menu__select">
+														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+													</svg>
+												</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+							<span class="chart__label">Часовой пояс: UTC+3</span>
+						</div>
+						<div class="chart__body">
+							<div class="chart__main">
+								<div class="chart-data popup-data" data-chart>
+									<span class="chart-data__date"></span>
+									<ul class="chart-data__list">
+										<li class="chart-data__item chart-data__item_order">
+											<span class="chart-data__subject">Заказано</span>
+											<span class="chart-data__sum"></span>
+											<span class="chart-data__quantity"></span>
+										</li>
+										<li class="chart-data__item chart-data__item_delivered">
+											<span class="chart-data__subject">Доставлено</span>
+											<span class="chart-data__sum"></span>
+											<span class="chart-data__quantity"></span>
+										</li>
+									</ul>
+									<svg class="icon popup-data__icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+									</svg>
+								</div>
+								<canvas id="chart" width="800" height="192"></canvas>
+								<canvas id="chart-1" width="800" height="192" class="chart__canvas"></canvas>
+							</div>
+
+
+
+							<div class="chart-info">
+								<div class="chart-info__column">
+									<div class="chart-info__head">
+										<span class="chart-info__separator"></span>
+										<span class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+											Заказано
+										</span>
+										<div class="chart-info__interval">4 - 17 июня</div>
+									</div>
+									<div class="chart-info__row">
+										<span class="chart-info__sum">31 234 ₽</span>
+										<div class="chart-info__counter">
+											<span class="chart-info__count">77</span>
+											<span class="chart-info__label">Товаров</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="chart-info__column">
+									<div class="chart-info__head">
+										<span class="chart-info__separator chart-info__separator_light"></span>
+										<span class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+											Доставлено
+										</span>
+										<div class="chart-info__interval">4 - 17 июня</div>
+									</div>
+									<div class="chart-info__row">
+										<span class="chart-info__sum">13 477 ₽</span>
+										<div class="chart-info__counter">
+											<span class="chart-info__count">33</span>
+											<span class="chart-info__label">Товаров</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="main-wall__box main-wall__box_column">
+						<div class="main-news">
+							<h3
+								class="caption caption_size_17 caption_weight_600 caption_theme_dark main-news__caption">
+								Что нового
+							</h3>
+							<div class="swiper main-news__slider" data-slider-news>
+								<ul class="swiper-wrapper">
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+									<li class="swiper-slide main-news__card">
+										<a href="#" class="main-news__link">
+											<span class="main-news__text">Изменение состава поставки</span>
+											<figure class="main-news__figure">
+												<img src="img/news_bg.jpg" class="main-news__bg" alt="">
+											</figure>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="card-info card-info_radius">
+							<a href="#" class="card-info__link">
+								<div class="card-info__body">
+									<h3 class="caption caption_size_19 caption_weight_600 caption_theme_white">
+										Польза от распродажи — в цифрах
+									</h3>
+									<div class="card-info__content card-info__content_theme_white">
+										<p>Посмотрите на графиках, как растут во время распродажи просмотры, заказы
+											и
+											ваш
+											заработок. Хотите ещё круче — попробуйте обновить скидку!
+										</p>
+									</div>
+								</div>
+
+								<div class="card-info__bottom">
+									<div class="card-info__price">
+										<span>8 399</span> ₽
+									</div>
+									<div class="card-info__content card-info__content_theme_white">
+										<p>
+											вы заработали за время акции
+										</p>
+									</div>
+								</div>
+							</a>
+							<img src="img/slider_bg_1.jpg" class="card-info__img" alt="">
+						</div>
+
+						<div class="swiper info-slider" data-slider-info>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide card-info">
+									<a href="#" class="card-info__link">
+										<div class="card-info__body">
+											<h3 class="caption caption_size_19 caption_weight_600 caption_theme_white">
+												Продавайте бизнесу
+											</h3>
+											<div class="card-info__content card-info__content_theme_white">
+												<p>
+													Увеличивайте охват аудитории и прибыль, подключая
+													документооборот с
+													юрлицами:
+												</p>
+												<ul class="card-info__list">
+													<li>
+														<span>Средний чек в B2B выше в 7 раз</span>
+													</li>
+													<li>
+														<span>+43% GMV за год и рост на 7,6% количества
+															заказов</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</a>
+									<img src="img/slider_bg_2.jpg" class="card-info__img" alt="">
+								</div>
+								<div class="swiper-slide card-info">
+									<a href="#" class="card-info__link">
+										<div class="card-info__body">
+											<h3 class="caption caption_size_19 caption_weight_600 caption_theme_white">
+												Ждём вас на встрече по открытию счёта
+											</h3>
+											<div class="card-info__content card-info__content_theme_white">
+												<p>
+													Сделаем всё быстро. Вам понадобится только смартфон и паспорт РФ
+												</p>
+											</div>
+										</div>
+									</a>
+									<img src="img/slider_bg_3.png" class="card-info__img" alt="">
+								</div>
+								<div class="swiper-slide card-info">
+									<a href="#" class="card-info__link">
+										<div class="card-info__body">
+											<h3 class="caption caption_size_19 caption_weight_600 caption_theme_dark">
+												Увеличивайте продажи
+											</h3>
+											<div class="card-info__content card-info__content_theme_dark">
+												<p>
+													Вы – владелец товарного знака или обладаете правами на его
+													защиту?
+													Подайте
+													заявку на ЛК бренда и получите доступ к новому функционалу!
+												</p>
+											</div>
+										</div>
+									</a>
+									<img src="img/slider_bg_4.png" class="card-info__img" alt="">
+								</div>
+								<div class="swiper-slide card-info">
+									<a href="#" class="card-info__link">
+										<div class="card-info__body">
+											<h3 class="caption caption_size_19 caption_weight_600 caption_theme_dark">
+												Кредит за 1 день
+											</h3>
+											<div class="card-info__content card-info__content_theme_dark">
+												<p>
+													Выгодное финансирование на любые цели. Оформите онлайн с
+													минимальным
+													набором
+													документов
+												</p>
+											</div>
+										</div>
+									</a>
+									<img src="img/slider_bg_5.png" class="card-info__img" alt="">
+								</div>
+							</div>
+							<div class="info-slider__control">
+								<button class="button info-slider__button" data-info-prev>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+								<button class="button info-slider__button info-slider__button_next" data-info-next>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<div class="vertical-slider	main-wall__box main-wall__box_small">
+						<div class="box-head vertical-slider__head">
+							<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+								Рейтинги продавца
+							</h3>
+							<div class="vertical-slider__control">
+								<button class="button vertical-slider__button vertical-slider__button_top"
+									data-rating-top>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+								<button class="button vertical-slider__button vertical-slider__button_bottom"
+									data-rating-bottom>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="swiper vertical-slider__main" data-slider-rating>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Оценка товаров</span>
+										<span class="vertical-slider__counter">4.75</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Время первого ответа</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Среднее время ответа</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Отвеченные чаты</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доставлено вовремя</span>
+										<span class="vertical-slider__counter">99%</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Процент отмен по FBS</span>
+										<span class="vertical-slider__counter">0%</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Просрочена отгрузка по FBS</span>
+										<span class="vertical-slider__counter">2.33%</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Просроченные отгрузки по realFBS</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Просроченные доставки по realFBS</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Оценка работы по FBO</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Поставки без опозданий</span>
+										<span class="vertical-slider__counter">2.33%</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Точность заявок</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Отмены поставок вовремя</span>
+										<span class="vertical-slider__counter">-.--</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доля товаров с индексом цен</span>
+										<span class="vertical-slider__counter">46%</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<div class="vertical-slider	main-wall__box main-wall__box_small">
+						<div class="box-head vertical-slider__head">
+							<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+								Коммуникации
+							</h3>
+							<div class="vertical-slider__control">
+								<button class="button vertical-slider__button vertical-slider__button_top"
+									data-communications-top>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+								<button class="button vertical-slider__button vertical-slider__button_bottom"
+									data-communications-bottom>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="swiper vertical-slider__main" data-slider-communications>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Сообщения</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Отзывы</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Вопросы</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Заявки на скидку</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head box-head_full main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Бонусы на продвижение
+								</h3>
+								<div class="bonus-info" data-info-popup>
+									<svg class="icon main-box__i-info">
+										<use xlink:href="img/icons/sprite.svg#i-info"></use>
+									</svg>
+									<div class="bonus-info__data popup-data">
+										<span class="bonus-info__caption">
+											Бонусы на продвижение
+										</span>
+										<div class="bonus-info__text">
+											<p>
+												Дарим бонусы за регистрацию, продажи, участие в опросах
+												и мероприятиях. Тратьте их
+												на продвижение с помощью трафаретов — увеличивайте охват и продажи.
+											</p>
+										</div>
+										<object type="owo/uwu">
+											<a href="#" class="bonus-info__link">
+												Подробнее про бонусы
+											</a>
+										</object>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="main-box__body">
+								<div class="main-box__column">
+									<span class="main-box__sum">14 066</span>
+									<span class="main-box__text">бонусов</span>
+								</div>
+							</div>
+							<div class="main-box__bottom">
+								<p>Успейте потратить бонусы на продвижение</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head box-head_full main-box__head">
+								<img src="img/premium.png" class="main-box__premium" alt="">
+								<span class="main-box__label main-box__label_theme_dark">
+									Доступна подписка
+								</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<div>
+										<span class="main-box__sum">0</span>
+										<span class="main-box__text_size_big">штрафов</span>
+										<svg class="icon main-box__i-select">
+											<use xlink:href="img/icons/sprite.svg#i-select"></use>
+										</svg>
+									</div>
+									<span class="main-box__text">По оценке товаров</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big">> 5 штрафов</span>
+									<span class="main-box__text main-box__text_theme_light">Отключим подписку</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Текущий период: 16 июня - 30 июня</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head box-head_full main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Трафареты
+								</h3>
+								<span class="main-box__label main-box__label_theme_red">
+									Низкий охват
+								</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">3.62%</span>
+									<span class="main-box__text">Охват аудитории, сегодня</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">3.89 %</span>
+									<span class="main-box__text main-box__text_theme_light">Вчера</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>22 из 27 товаров с низким охватом</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-box_col main-wall__box main-wall__box_small">
+						<div class="box-head">
+							<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+								Бонусы
+							</h3>
+							<button class="button box-head__button" data-head-menu="bonus">
+								<span>Программа лояльности</span>
+								<svg class="icon">
+									<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+								</svg>
+							</button>
+							<div class="head-menu head-menu_bonus">
+								<ul class="head-menu__list">
+									<li>
+										<button class="button head-menu__button">
+											<span>Программа лояльности</span>
+											<svg class="icon head-menu__select head-menu__select_active">
+												<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+											</svg>
+										</button>
+									</li>
+									<li>
+										<button class="button head-menu__button">
+											<span>Рассылка</span>
+											<svg class="icon head-menu__select">
+												<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+											</svg>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- 1 - блок -->
+						<a href="#" class="main-box__link main-box__link_size_small ">
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">22</span>
+									<span class="main-box__text">Клиенты с бонусами</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">0.22%</span>
+									<span class="main-box__text main-box__text_theme_light">Расходы на бонусы</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Программа активна</p>
+							</div>
+						</a>
+						<!-- 1 - блок -->
+						<!-- 2 - блок -->
+						<a href="#" class="main-box__link main-box__link_hide main-box__link_size_small">
+							<div class="main-box__column">
+								<span class="main-box__sum">до 10%</span>
+								<span class="main-box__text">Конверсия в покупку</span>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Создать новую рассылку</p>
+							</div>
+						</a>
+						<!-- 2 - блок -->
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head box-head_full main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Индекс цен
+								</h3>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">94 %</span>
+									<span class="main-box__text">Выгодный</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">6 %</span>
+									<span class="main-box__text main-box__text_theme_light">Невыгодный</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Индекс влияет на позицию товаров в поиске</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head box-head_full main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Индекс локализации
+								</h3>
+								<span class="main-box__label main-box__label_theme_red">
+									+25% к логистике
+								</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">22%</span>
+									<span class="main-box__text">За последние 14 дней</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">при 35%</span>
+									<span class="main-box__text main-box__text_theme_light">станет дешевле</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Увеличьте индекс и снизьте затраты</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head  main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Конкурентная позиция
+								</h3>
+								<span class="main-box__interval">за 14 дней</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum"># 140</span>
+									<span class="main-box__text">-238</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">
+										У 66% продавцов
+									</span>
+									<span class="main-box__text main-box__text_theme_light">оборот ниже</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Седло, подседельный штырь для велосипеда</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head  main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Просроченные отгрузки
+								</h3>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">2.33 %</span>
+									<span class="main-box__text">Сегодня</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">
+										0%
+									</span>
+									<span class="main-box__text main-box__text_theme_light">Вчера</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Показатель должен быть ниже 20%</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="vertical-slider main-box main-wall__box main-wall__box_small">
+						<div class="box-head vertical-slider__head">
+							<div class="main-box__slider-head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Заказы FBO
+								</h3>
+								<span class="main-box__interval">16 - 16 июня</span>
+							</div>
+							<div class="vertical-slider__control">
+								<button class="button vertical-slider__button vertical-slider__button_top" data-fbo-top>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+								<button class="button vertical-slider__button vertical-slider__button_bottom"
+									data-fbo-bottom>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="swiper vertical-slider__main" data-slider-fbo>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Ожидают сборки</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Ожидают отгрузки</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доставлены</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доставляются</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Отменены</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="vertical-slider main-box main-wall__box main-wall__box_small">
+						<div class="box-head vertical-slider__head">
+							<div class="main-box__slider-head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Заказы FBS
+								</h3>
+								<span class="main-box__interval">16 - 16 июня</span>
+							</div>
+							<div class="vertical-slider__control">
+								<button class="button vertical-slider__button vertical-slider__button_top" data-fbs-top>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+								<button class="button vertical-slider__button vertical-slider__button_bottom"
+									data-fbs-bottom>
+									<svg class="icon">
+										<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="swiper vertical-slider__main" data-slider-fbs>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Ожидают сборки</span>
+										<span class="vertical-slider__counter">4</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Готовы к отгрузке сегодня</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Готовы к отгрузке позже</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Не приняты на СЦ</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доставляются</span>
+										<span class="vertical-slider__counter">2</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Доставлены</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="vertical-slider__slide">
+										<span class="vertical-slider__text">Отменены</span>
+										<span class="vertical-slider__counter">0</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link main-box__link_align_top">
+							<div class="box-head  main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Доставлено товаров
+								</h3>
+								<span class="main-box__interval">16 - 16 июня</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">4 133 ₽</span>
+									<span class="main-box__text">Текущий период</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">
+										2359.93 %
+									</span>
+									<span class="main-box__text main-box__text_theme_light">Прошлый период</span>
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link">
+							<div class="box-head  main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Продажи в категории
+								</h3>
+								<span class="main-box__interval">за 14 дней</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">+1532 %</span>
+									<span class="main-box__text">Ваши продажи</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">
+										-1 %
+									</span>
+									<span class="main-box__text main-box__text_theme_light">Продажи Ozon</span>
+								</div>
+							</div>
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Седло, подседельный штырь для велосипеда</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="main-box main-box_col main-wall__box main-wall__box_small">
+						<div class="box-head">
+							<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+								Что продавать на Ozon
+							</h3>
+							<button class="button box-head__button" data-head-menu="sales">
+								<span>Седло, подседел...</span>
+								<svg class="icon">
+									<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+								</svg>
+							</button>
+
+							<div class="head-menu head-menu_sales">
+								<ul class="head-menu__list">
+									<li>
+										<button class="button head-menu__button head-menu__button_top">
+											<span class="head-menu__column">
+												<span>Седло, подседельный штырь для велосипеда</span>
+												<span class="head-menu__label">Подкатегория с лучшими продажами</span>
+											</span>
+											<svg class="icon head-menu__select head-menu__select_active">
+												<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+											</svg>
+										</button>
+									</li>
+									<li>
+										<button class="button head-menu__button head-menu__button_top">
+											<span class="head-menu__column">
+												<span>Спорт и отдых</span>
+												<span class="head-menu__label">Ваша основная категория</span>
+											</span>
+											<svg class="icon head-menu__select">
+												<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+											</svg>
+										</button>
+									</li>
+									<li>
+										<a href="#" class="button head-menu__button head-menu__button_top">
+											<span class="head-menu__column">
+												<span>Изучить другие категории</span>
+												<span class="head-menu__label">
+													Собираем данные о товарах-бестселлерах
+												</span>
+											</span>
+											<svg class="icon head-menu__select">
+												<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
+											</svg>
+										</a>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+						<div class="main-box__link main-box__link_align_top main-box__link_size_small">
+							<!-- 1 блок начало-->
+							<div class="main-box__goods">
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/poduct.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/poduct.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/poduct.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/poduct.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/poduct.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+							</div>
+							<!-- 1 блок  конец-->
+							<!-- 2 блок начало -->
+							<div class="main-box__goods main-box__goods_hide">
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/product_2.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/product_2.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/product_2.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/product_2.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+								<a href="#" class="main-product" data-info-popup>
+									<figure class="main-box__product">
+										<img src="img/product_2.jpg" alt="">
+									</figure>
+									<div class="main-product__data popup-data">
+										<div class="main-product__head">
+											<span class="main-product__caption">
+												Каркасный бассейн Bestway 305 х 100 (305x100) см, круглый, глубо...
+											</span>
+											<span class="main-product__label">
+												В топ-5 по популярности
+											</span>
+										</div>
+										<ul class="main-product__list">
+											<li class="main-product__item">
+												<span class="main-product__parameter">Средняя цена</span>
+												<span class="main-product__price">127 986 ₽</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Просмотры за 28 дней</span>
+												<span class="main-product__price">6984</span>
+											</li>
+											<li class="main-product__item">
+												<span class="main-product__parameter">Конверсия в корзину</span>
+												<span class="main-product__price">6,94%</span>
+											</li>
+										</ul>
+										<svg class="icon popup-data__icon">
+											<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
+										</svg>
+									</div>
+								</a>
+							</div>
+							<!-- 2 блок конец -->
+							<div class="main-box__text main-box__text_theme_light">
+								<p>Добавьте в ассортимент популярные товары</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="main-box main-wall__box main-wall__box_small">
+						<a href="#" class="main-box__link main-box__link_align_top">
+							<div class="box-head  main-box__head">
+								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
+									Размещение на складах
+								</h3>
+								<span class="main-box__interval">16 - 30 июня</span>
+							</div>
+							<div class="main-box__body main-box__body_row">
+								<div class="main-box__column">
+									<span class="main-box__sum">0 ₽</span>
+									<span class="main-box__text">Сегодня</span>
+								</div>
+
+								<div class="main-box__column">
+									<span class="main-box__text_size_big main-box__text_theme_light">
+										0 ₽
+									</span>
+									<span class="main-box__text main-box__text_theme_light">Прогноз на 30.06</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_js.htm',{})
+</body>
+
 </html>

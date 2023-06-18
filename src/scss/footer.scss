@@ -1,3 +1,124 @@
 //====================================================================================================
+.footer {
+    position: relative;
+    border-top: 1px solid rgba(97, 131, 162, 0.1);
 
+    &__body {
+        display: flex;
+        align-items: center;
+        height: rem(75);
+        padding: rem(14) rem(24);
+        font-size: rem(13);
+        line-height: 1.4;
+        color: rgba(0, 17, 34, 0.66);
+    }
+
+    &__help {
+        position: absolute;
+        right: rem(14);
+        bottom: rem(29);
+        width: rem(86);
+        height: rem(48);
+        background-color: #ffffff;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: rem(1);
+            left: 0;
+            width: 86px;
+            height: 48px;
+            background-image: url("../img/icons/footer-message.svg");
+            background-size: 88px 48px;
+            background-position-x: -1px;
+        }
+    }
+
+    &__nav {
+        position: absolute;
+        top: rem(-24);
+        right: rem(20);
+        display: none;
+        width: rem(300);
+        box-shadow: 0 5px 10px 0 #8d95a5;
+        padding-top: rem(8);
+        border-radius: 3px;
+        transform: translateY(-100%);
+
+        &_active {
+            display: block;
+        }
+    }
+
+    &__list {
+        padding: rem(4) rem(12) rem(14) rem(12);
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        column-gap: rem(16);
+        height: rem(48);
+        padding: rem(16) rem(12);
+        border-radius: 4px;
+        white-space: nowrap;
+        transition: background-color 0.3s;
+    }
+
+    &__help-icon {
+        width: rem(24);
+        height: rem(24);
+        fill: #8d95a5;
+    }
+
+    &__mail {
+        width: rem(24);
+        height: rem(16);
+        fill: #8d95a5;
+    }
+
+    &__ozon {
+        width: rem(25);
+        height: rem(24);
+    }
+
+    &__seller {
+        font-weight: 600;
+    }
+
+    &__caption {
+        display: inline-block;
+        width: 100%;
+        padding: 0 rem(24) rem(12) rem(24);
+        line-height: 1.4;
+        border-bottom: 1px solid #e6e9f0;
+        font-weight: 600;
+        color: #8d95a5;
+    }
+
+    &__button {
+        position: absolute;
+        top: rem(-16);
+        right: rem(41);
+        width: rem(40);
+        height: rem(40);
+        border-radius: 50%;
+        background-color: rgba(0, 91, 255, 1);
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: rem(24);
+            height: rem(24);
+            transform: translate(-50%, -50%) scale(1);
+            fill: rgba(255, 255, 255, 0.95);
+            transition: transform 0.3s;
+        }
+    }
+
+    &__icon-hide {
+        transform: translate(-50%, -50%) scale(0) !important;
+    }
+}
 //====================================================================================================

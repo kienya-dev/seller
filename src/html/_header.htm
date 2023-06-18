@@ -1,4 +1,412 @@
 <header class="header">
-	<div class="header__container">
+	<div class="header__content">
+		<div class="header__top">
+			<a href="#" class="header__logo">
+				<img src="img/logo.svg" alt="">
+			</a>
+			<nav class="header-bar">
+				<ul class="header-bar__list">
+					<li class="header-bar__item">
+						<button class="button header-bar__button">
+							<span>VeloTraining</span>
+							<svg class="icon">
+								<use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+							</svg>
+						</button>
+					</li>
+					<li class="header-bar__item">
+						<a href="#" class="header-bar__link">
+							<svg class="icon header-bar__icon">
+								<use xlink:href="img/icons/sprite.svg#i-user"></use>
+							</svg>
+						</a>
+					</li>
+					<li class="header-bar__item">
+						<a href="#" class="header-bar__link">
+							<svg class="icon header-bar__icon">
+								<use xlink:href="img/icons/sprite.svg#i-message"></use>
+							</svg>
+						</a>
+					</li>
+					<li class="header-bar__item">
+						<a href="#" class="header-bar__link">
+							<svg class="icon header-bar__icon">
+								<use xlink:href="img/icons/sprite.svg#i-question"></use>
+							</svg>
+						</a>
+					</li>
+					<li class="header-bar__item">
+						<a href="#" class="header-bar__link">
+							<svg class="icon header-bar__icon">
+								<use xlink:href="img/icons/sprite.svg#i-learn"></use>
+							</svg>
+						</a>
+					</li>
+					<li class="header-bar__item">
+						<a href="#" class="header-bar__link">
+							<svg class="icon header-bar__icon">
+								<use xlink:href="img/icons/sprite.svg#i-mouthpiece"></use>
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<nav>
+			<ul class="header__nav-list">
+				<li class="header__nav-item">
+					<a href="#" class="header__link header__link_active">
+						<span>Главная</span>
+					</a>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Товары и цены</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column drop-menu__column_group">
+								<span class="drop-menu__caption drop-menu__caption_group">Товары</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Список товаров</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Добавить товары</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Управление штрихкодами</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Обновить артикулы</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Обновить через фид</a>
+									</li>
+								</ul>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Загрузить изображения</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">История обновлений</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Сертификаты качества</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Документы на бренды</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Управление карточками товаров</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Цены</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Цены на товары</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Обновить цены</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Карантин цен</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Стратегии ценообразования</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Проверить ссылки на другие площадки</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>FBO</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Заказы со склада Ozon</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Заявки на поставку</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Акты о расхождениях</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Заявки на вывоз</a>
+									</li>
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Стоимость размещения</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Склады и регионы</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Собственные склады</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Управление квантами</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>FBS</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Заказы с моих складов</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Возвраты FBS</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Возвраты realFBS</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Заявки на отмену</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Обновить остатки на складах</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Логистика</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Финансы</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Начисления и документы</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Баланс на сегодня</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Список отчетов</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Начисления</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Выплаты</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Документы</a>
+									</li>
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Развитие бизнеса</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Гибкий график выплат</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Кредитование</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Деньги на закупки</a>
+									</li>
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Банк</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Счёт для бизнеса</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Аналитика</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column drop-menu__column_group">
+								<span class="drop-menu__caption drop-menu__caption_group">Аналитика продавца</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Воронка продаж</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Графики</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Акции</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Товары в поиске</a>
+									</li>
+								</ul>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">География продаж</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Внешний трафик</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Отчеты</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Ваши исследования</a>
+									</li>
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Аналитика площадки</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Тренды</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Конкурентная позиция</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Портрет покупателя</a>
+									</li>
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Что продавать на Ozon</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Популярные товары</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Поисковые запросы</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Недостающие товары</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Распродано</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Продвижение</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Привлечение</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Трафареты</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Продвижение в поиске</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Медийная реклама</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Акции</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Отзывы за баллы</a>
+									</li>
+
+								</ul>
+							</div>
+							<div class="drop-menu__column">
+								<span class="drop-menu__caption">Лояльность</span>
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Заявки на скидку</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Бонусы продавца</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Рассрочка</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Рейтинг</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Рейтинг продавца</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Premium для продавцов</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Жалобы</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="header__nav-item">
+					<a href="#" class="header__link">
+						<span>Отзывы</span>
+					</a>
+					<div class="drop-menu">
+						<div class="drop-menu__inner">
+							<div class="drop-menu__column">
+								<ul class="drop-menu__list">
+									<li>
+										<a href="#" class="drop-menu__link">Отзывы покупателей</a>
+									</li>
+									<li>
+										<a href="#" class="drop-menu__link">Вопросы и ответы</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</nav>
 	</div>
 </header>

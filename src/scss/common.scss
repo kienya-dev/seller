@@ -1,1 +1,35 @@
 // Заголовки, общие БЄМ блоки и проче...
+
+.caption {
+    line-height: 1.45;
+    &_size_17 {
+        font-size: rem(17);
+    }
+
+    &_size_19 {
+        font-size: rem(19);
+    }
+
+    &_weight_600 {
+        font-weight: 600;
+    }
+
+    &_theme_white {
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    &_theme_dark {
+        color: rgba(0, 17, 34, 0.95);
+    }
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.icon {
+    display: inline-block;
+}
