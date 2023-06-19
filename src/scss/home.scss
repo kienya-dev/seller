@@ -175,11 +175,45 @@
 
 //====================================================================================================
 .chart {
+    position: relative;
+
+    &__preloader {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #eff2f6;
+        z-index: 12;
+        border-radius: 18px;
+        transform: rotate(180deg);
+        transition: opacity 0.3s, visibility 0.3s;
+        background: linear-gradient(-45deg, #eff2f6, #ededed, #ffffff, #eff2f6);
+        background-size: 400% 400%;
+        animation: gradient 5s ease infinite;
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        &_hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
     &__head {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: rem(10);
+        padding: 0 rem(5);
     }
 
     &__label {
@@ -190,7 +224,7 @@
     &__body {
         position: relative;
         background-color: #f5f7fa;
-        border-radius: 10px;
+        border-radius: 18px;
         transition: background-color 0.15s;
 
         &:hover {
@@ -203,10 +237,19 @@
     }
 
     &__canvas {
+        overflow: hidden;
+    }
+
+    &__charts {
+        position: relative;
+        left: -30px;
+    }
+
+    &__hover {
         position: absolute;
         top: 0;
         left: 0;
-        width: rem(800);
+        width: rem(830);
         height: 100%;
         cursor: pointer;
     }
@@ -305,7 +348,7 @@
     opacity: 0;
     font-size: rem(15);
     transform: translate(-50%, -100%);
-    transition: opacity 0.15s ease, left 0.15s;
+    transition: opacity 0.1s, left 0.15s;
     pointer-events: none;
     white-space: nowrap;
     &_active {
@@ -546,7 +589,15 @@
         height: rem(32);
         padding: rem(4);
         border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.65);
+        background-color: rgba(255, 255, 255, 0.45);
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.65);
+        }
+        &:active {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
 
         svg {
             width: rem(24);
@@ -573,6 +624,15 @@
         display: flex;
         align-items: center;
         column-gap: rem(1);
+
+        .swiper-button-disabled {
+            opacity: 0.2;
+            pointer-events: none;
+            cursor: auto;
+            &:hover {
+                background-color: transparent !important;
+            }
+        }
     }
 
     &__button {
@@ -580,6 +640,10 @@
         height: rem(44);
         padding: rem(4);
         border-radius: 8px;
+
+        &:hover {
+            background-color: rgba(97, 131, 162, 0.1);
+        }
 
         svg {
             width: rem(24);
@@ -614,6 +678,10 @@
         padding: rem(8) rem(24);
         border-radius: 16px;
         background-color: rgba(245, 247, 250, 1);
+        transition: background-color 0.2s;
+        &:hover {
+            background-color: rgba(244, 250, 254, 1);
+        }
     }
 
     &__text {
@@ -656,6 +724,7 @@
         padding: rem(20) rem(20) rem(24);
         border-radius: 24px;
         background-color: #f5f7fa;
+        transition: background-color 0.2s;
 
         &_align_top {
             justify-content: start;
@@ -668,6 +737,10 @@
 
         &_hide {
             display: none;
+        }
+
+        &:hover {
+            background-color: rgba(244, 250, 254, 1);
         }
     }
 
@@ -909,5 +982,6 @@
         font-size: rem(15);
         font-weight: 600;
         color: rgba(47, 155, 249, 1);
+        transition: color 0.3s;
     }
 }

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230618160158">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230619090330">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -546,6 +546,7 @@
 			<section class="main-wall">
 				<div class="main-wall__container">
 					<div class="chart main-wall__box main-wall__box_big">
+						<div class="chart__preloader"></div>
 						<div class="chart__head">
 							<div class="box-head">
 								<h3 class="caption caption_size_17 caption_weight_600 caption_theme_dark">
@@ -566,7 +567,7 @@
 										</div>
 										<ul class="head-menu__list">
 											<li>
-												<button class="button head-menu__button" data-content="рублях">
+												<button class="button head-menu__button" data-chart-control data-content="рублях">
 													<span>Рубли</span>
 													<svg class="icon head-menu__select head-menu__select_active">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -574,7 +575,7 @@
 												</button>
 											</li>
 											<li>
-												<button class="button head-menu__button" data-content="штуках">
+												<button class="button head-menu__button" data-chart-control data-content="штуках">
 													<span>Штуки</span>
 													<svg class="icon head-menu__select">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -592,7 +593,7 @@
 										</div>
 										<ul class="head-menu__list">
 											<li>
-												<button class="button head-menu__button" data-interval="неделю">
+												<button class="button head-menu__button" data-chart-control data-interval="неделю">
 													<span>Неделя</span>
 													<svg class="icon head-menu__select">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -600,7 +601,7 @@
 												</button>
 											</li>
 											<li>
-												<button class="button head-menu__button" data-interval="7 дней">
+												<button class="button head-menu__button" data-chart-control data-interval="7 дней">
 													<span>7 дней</span>
 													<svg class="icon head-menu__select">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -608,7 +609,7 @@
 												</button>
 											</li>
 											<li>
-												<button class="button head-menu__button" data-interval="14 дней">
+												<button class="button head-menu__button" data-chart-control data-interval="14 дней">
 													<span>14 дней</span>
 													<svg class="icon head-menu__select head-menu__select_active">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -616,7 +617,7 @@
 												</button>
 											</li>
 											<li>
-												<button class="button head-menu__button" data-interval="28 дней">
+												<button class="button head-menu__button" data-chart-control data-interval="28 дней">
 													<span>28 дней</span>
 													<svg class="icon head-menu__select">
 														<use xlink:href="img/icons/sprite.svg#i-select-menu"></use>
@@ -650,10 +651,13 @@
 										<use xlink:href="img/icons/sprite.svg#i-arrow"></use>
 									</svg>
 								</div>
-								<canvas id="chart" width="800" height="192"></canvas>
-								<canvas id="chart-1" width="800" height="192" class="chart__canvas"></canvas>
+								<div class="chart__canvas">
+									<div class="chart__charts">
+										<canvas id="chart" width="830" height="192"></canvas>
+										<canvas id="chart-1" width="830" height="192" class="chart__hover"></canvas>
+									</div>
+								</div>
 							</div>
-
 
 
 							<div class="chart-info">
@@ -663,13 +667,13 @@
 										<span class="caption caption_size_17 caption_weight_600 caption_theme_dark">
 											Заказано
 										</span>
-										<div class="chart-info__interval">4 - 17 июня</div>
+										<div class="chart-info__interval" data-chart-inerval></div>
 									</div>
-									<div class="chart-info__row">
-										<span class="chart-info__sum">31 234 ₽</span>
+									<div class="chart-info__row" data-chart-counter="order">
+										<span class="chart-info__sum"></span>
 										<div class="chart-info__counter">
-											<span class="chart-info__count">77</span>
-											<span class="chart-info__label">Товаров</span>
+											<span class="chart-info__count"></span>
+											<span class="chart-info__label"></span>
 										</div>
 									</div>
 								</div>
@@ -680,13 +684,13 @@
 										<span class="caption caption_size_17 caption_weight_600 caption_theme_dark">
 											Доставлено
 										</span>
-										<div class="chart-info__interval">4 - 17 июня</div>
+										<div class="chart-info__interval" data-chart-inerval></div>
 									</div>
-									<div class="chart-info__row">
-										<span class="chart-info__sum">13 477 ₽</span>
+									<div class="chart-info__row" data-chart-counter="delivered">
+										<span class="chart-info__sum"></span>
 										<div class="chart-info__counter">
-											<span class="chart-info__count">33</span>
-											<span class="chart-info__label">Товаров</span>
+											<span class="chart-info__count"></span>
+											<span class="chart-info__label"></span>
 										</div>
 									</div>
 								</div>
@@ -876,9 +880,6 @@
 								</button>
 							</div>
 						</div>
-
-
-
 					</div>
 
 					<div class="vertical-slider	main-wall__box main-wall__box_small">
@@ -1951,7 +1952,7 @@
 			</button>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20230618160158"></script>
+	<script src="js/app.min.js?_v=20230619090330"></script>
 </body>
 
 </html>

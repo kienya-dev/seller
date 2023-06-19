@@ -69,3 +69,11 @@ h6 {
 	font-weight: inherit;
 	font-size: inherit;
 }
+
+a,
+canvas,
+button,
+.swiper-slide,
+label {
+	-webkit-tap-highlight-color: transparent;
+}

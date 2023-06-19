@@ -104,6 +104,11 @@
         height: rem(40);
         border-radius: 50%;
         background-color: rgba(0, 91, 255, 1);
+        transition: transform 0.15s;
+
+        &:hover {
+            transform: translateY(rem(-4));
+        }
 
         svg {
             position: absolute;

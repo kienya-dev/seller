@@ -74,6 +74,10 @@
 				}
 			}
 		}
+
+		&:hover {
+			color: rgba(0, 91, 255, 1);
+		}
 	}
 }
 
@@ -120,13 +124,20 @@
 	}
 
 	&__link {
-		display: inline-block;
+		display: flex;
+		align-items: center;
 		min-height: rem(44);
 		padding: rem(10) rem(16);
 		font-size: rem(15);
 		line-height: 1.25;
+		border-radius: 8px;
 		color: rgba(0, 17, 34, 0.95);
 		white-space: nowrap;
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: rgba(97, 131, 162, 0.1);
+		}
 	}
 }
 
@@ -138,6 +149,11 @@
 	}
 
 	&__item {
+		&:hover {
+			.header-bar__icon {
+				fill: rgba(0, 17, 34, 0.55);
+			}
+		}
 	}
 
 	&__button {
@@ -151,7 +167,7 @@
 			height: rem(20);
 			fill: currentColor;
 			transform: rotate(-90deg);
-			transition: transform 0.15s;
+			transition: transform 0.15s, fill 0.3s;
 		}
 	}
 
@@ -274,6 +290,11 @@
 		line-height: 1.5;
 		font-size: rem(13);
 		color: rgba(0, 91, 255, 1);
+		transition: color 0.3s;
+
+		&:hover {
+			color: rgba(47, 155, 249, 1);
+		}
 	}
 
 	&__menu {
@@ -299,6 +320,11 @@
 		padding: rem(10) rem(12);
 		font-size: rem(15);
 		color: rgba(0, 17, 34, 0.95);
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: rgba(97, 131, 162, 0.1);
+		}
 	}
 
 	&__icon {
@@ -371,5 +397,10 @@
 		padding: rem(10) rem(12);
 		font-size: rem(15);
 		color: rgba(0, 17, 34, 0.95);
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: rgba(97, 131, 162, 0.1);
+		}
 	}
 }
