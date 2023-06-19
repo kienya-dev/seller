@@ -237,9 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
             context.stroke();
 
             // Серая нижняя линия
-            context.setLineDash([0, 0]);
+            context.setLineDash([1, 0]);
+
             context.beginPath();
             context.moveTo(0, 152);
+            context.lineWidth = 1;
+
             context.lineTo(788 + 43, 152);
             context.strokeStyle = '#D3DDE6';
             context.stroke();
@@ -260,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let controlPointY2 = y;
                 context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
             }
-
+            context.setLineDash([0, 0]);
             context.lineWidth = 2.25;
             context.fillStyle = '#d6e8fb';
             context.fill();
@@ -282,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 var controlPointY2 = y;
                 context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
             }
-
+            context.setLineDash([0, 0]);
             context.lineWidth = 2.25;
             context.strokeStyle = '#3499F1';
             context.stroke();
@@ -333,13 +336,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const animateChart = setInterval(() => {
+        const animateChart = () => {
+            if (chartHeight < 124) requestAnimationFrame(animateChart);
             chartHeight = chartHeight + 4;
             rebuildChart();
-            if (chartHeight >= 128) {
-                clearInterval(animateChart);
-            }
-        }, 0.1)
+        }
+        animateChart();
 
         // ========================================================================================================================================================================================================================================================
         // CANVAS - 1 ============================================================================================================================================================================================================================================================================================================

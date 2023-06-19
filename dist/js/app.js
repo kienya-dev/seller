@@ -3232,9 +3232,10 @@
                 context.lineTo(788 + 43, (152 + 24) / 2);
                 context.strokeStyle = "#D3DDE6";
                 context.stroke();
-                context.setLineDash([ 0, 0 ]);
+                context.setLineDash([ 1, 0 ]);
                 context.beginPath();
                 context.moveTo(0, 152);
+                context.lineWidth = 1;
                 context.lineTo(788 + 43, 152);
                 context.strokeStyle = "#D3DDE6";
                 context.stroke();
@@ -3251,6 +3252,7 @@
                     let controlPointY2 = y;
                     context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
                 }
+                context.setLineDash([ 0, 0 ]);
                 context.lineWidth = 2.25;
                 context.fillStyle = "#d6e8fb";
                 context.fill();
@@ -3269,6 +3271,7 @@
                     var controlPointY2 = y;
                     context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
                 }
+                context.setLineDash([ 0, 0 ]);
                 context.lineWidth = 2.25;
                 context.strokeStyle = "#3499F1";
                 context.stroke();
@@ -3306,11 +3309,12 @@
                     context.fillText(salesHistory[i].date.abbreviated, x, canvas.height - 18);
                 }
             };
-            const animateChart = setInterval((() => {
+            const animateChart = () => {
+                if (chartHeight < 124) requestAnimationFrame(animateChart);
                 chartHeight += 4;
                 rebuildChart();
-                if (chartHeight >= 128) clearInterval(animateChart);
-            }), .1);
+            };
+            animateChart();
             const canvas1 = document.getElementById("chart-1");
             const context1 = canvas1.getContext("2d");
             let activeNumPoint = 0;
