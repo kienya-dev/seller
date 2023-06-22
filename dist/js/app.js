@@ -3258,22 +3258,37 @@
                 context.fill();
                 context.beginPath();
                 context.moveTo(20, canvas.height - dataChartOrders[0] * pointHeightRatio - 40);
-                for (var i = 0; i < dataChartOrders.length; i++) {
-                    var x = i * pointWidth + 20;
-                    var y = canvas.height - dataChartOrders[i] * pointHeightRatio - 40;
+                for (let i = 0; i < dataChartOrders.length; i++) {
+                    let x = i * pointWidth + 20;
+                    let y = canvas.height - dataChartOrders[i] * pointHeightRatio - 40;
                     points.push(x);
                     pointsY.push(y);
-                    var prevX = (i - 1) * pointWidth + 20;
-                    var prevY = canvas.height - dataChartOrders[i - 1] * pointHeightRatio - 40;
-                    var controlPointX1 = (prevX + x) / 2;
-                    var controlPointY1 = prevY;
-                    var controlPointX2 = (prevX + x) / 2;
-                    var controlPointY2 = y;
-                    context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
+                    let prevX = (i - 1) * pointWidth + 20;
+                    let prevY = canvas.height - dataChartOrders[i - 1] * pointHeightRatio - 40;
+                    let controlPointX1 = (prevX + x) / 2;
+                    let controlPointY1 = prevY;
+                    let controlPointX2 = (prevX + x) / 2;
+                    let controlPointY2 = y;
+                    if (i < dataChartOrders.length - 1) context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
                 }
                 context.setLineDash([ 0, 0 ]);
                 context.lineWidth = 2.25;
                 context.strokeStyle = "#3499F1";
+                context.stroke();
+                context.beginPath();
+                context.moveTo((dataChartOrders.length - 2) * pointWidth + 20, pointsY[pointsY.length - 2]);
+                let x = (dataChartOrders.length - 1) * pointWidth + 20;
+                let y = canvas.height - dataChartOrders[dataChartOrders.length - 1] * pointHeightRatio - 40;
+                let prevX = (dataChartOrders.length - 1 - 1) * pointWidth + 20;
+                let prevY = canvas.height - dataChartOrders[dataChartOrders.length - 1 - 1] * pointHeightRatio - 40;
+                let controlPointX1 = (prevX + x) / 2;
+                let controlPointY1 = prevY;
+                let controlPointX2 = (prevX + x) / 2;
+                let controlPointY2 = y;
+                context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
+                context.setLineDash([ 4, 4 ]);
+                context.lineWidth = 2;
+                context.strokeStyle = "#b7d9f7";
                 context.stroke();
                 for (let i = 0; i < dataChartOrders.length; i++) {
                     let x = i * pointWidth + 20;
@@ -3473,7 +3488,7 @@
         footerHelpButton.addEventListener("click", showFooterMenu);
         const getDataChart = async () => {
             try {
-                let response = await fetch("data.json");
+                let response = await fetch("https://api.jsonbin.io/v3/b/648fc7fa9d312622a371e328");
                 if (response.ok) {
                     response.json().then((result => {
                         chartData = result.record;
