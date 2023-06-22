@@ -3303,7 +3303,7 @@
                 for (let i = 0; i < salesHistory.length; i++) {
                     let x = i * pointWidth + 40;
                     canvas.height, dataChartOrders[i];
-                    context.font = "12px Arial";
+                    salesHistory.length > 18 && i % 2 ? context.font = "0px Arial" : context.font = "12px Arial";
                     context.fillStyle = "#8d95a5";
                     context.textAlign = "right";
                     context.fillText(salesHistory[i].date.abbreviated, x, canvas.height - 18);
@@ -3473,7 +3473,7 @@
         footerHelpButton.addEventListener("click", showFooterMenu);
         const getDataChart = async () => {
             try {
-                let response = await fetch("https://api.jsonbin.io/v3/b/648fc7fa9d312622a371e328");
+                let response = await fetch("data.json");
                 if (response.ok) {
                     response.json().then((result => {
                         chartData = result.record;

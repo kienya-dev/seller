@@ -1,0 +1,401 @@
+{
+    "record": [
+        {
+            "date": {
+                "abbreviated": "26, Пт",
+                "full": "26 мая, Пятница"
+            },
+            "order": {
+                "sum": 50000,
+                "total": 10
+            },
+            "delivered": {
+                "sum": 50000,
+                "total": 2
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "27, Сб",
+                "full": "27 мая, Суббота"
+            },
+            "order": {
+                "sum": 20000,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 800,
+                "total": 2
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "28, Вс",
+                "full": "28 мая, Воскресенье"
+            },
+            "order": {
+                "sum": 15000,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 12002,
+                "total": 2
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "29, Пн",
+                "full": "29 мая, Понедельник"
+            },
+            "order": {
+                "sum": 200000,
+                "total": 3
+            },
+            "delivered": {
+                "sum": 160000,
+                "total": 2
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "30, Вт",
+                "full": "30 мая, Вторник"
+            },
+            "order": {
+                "sum": 25000,
+                "total": 1
+            },
+            "delivered": {
+                "sum": 2000,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "31, Ср",
+                "full": "31 мая, Среда"
+            },
+            "order": {
+                "sum": 30000,
+                "total": 1
+            },
+            "delivered": {
+                "sum": 2400,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "01, Чт",
+                "full": "01 июня, Четверг"
+            },
+            "order": {
+                "sum": 35000,
+                "total": 1
+            },
+            "delivered": {
+                "sum": 2800,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "02, Пт",
+                "full": "02 июня, Пятница"
+            },
+            "order": {
+                "sum": 40000,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 3200,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "03, Сб",
+                "full": "03 июня, Суббота"
+            },
+            "order": {
+                "sum": 45000,
+                "total": 3
+            },
+            "delivered": {
+                "sum": 3600,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "04, Вс",
+                "full": "04 июня, Воскресенье"
+            },
+            "order": {
+                "sum": 5000,
+                "total": 4
+            },
+            "delivered": {
+                "sum": 4000,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "05, Пн",
+                "full": "05 июня, Понедельник"
+            },
+            "order": {
+                "sum": 5500,
+                "total": 5
+            },
+            "delivered": {
+                "sum": 4400,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "06, Вт",
+                "full": "06 июня, Вторник"
+            },
+            "order": {
+                "sum": 6000,
+                "total": 5
+            },
+            "delivered": {
+                "sum": 4800,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "07, Ср",
+                "full": "07 июня, Среда"
+            },
+            "order": {
+                "sum": 6500,
+                "total": 5
+            },
+            "delivered": {
+                "sum": 5200,
+                "total": 5
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "08, Чт",
+                "full": "08 июня, Четверг"
+            },
+            "order": {
+                "sum": 70000,
+                "total": 6
+            },
+            "delivered": {
+                "sum": 5600,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "09, Пт",
+                "full": "09 июня, Пятница"
+            },
+            "order": {
+                "sum": 55500,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 6000,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "10, Сб",
+                "full": "10 июня, Суббота"
+            },
+            "order": {
+                "sum": 70001,
+                "total": 1
+            },
+            "delivered": {
+                "sum": 6400,
+                "total": 2
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "11, Вс",
+                "full": "11 июня, Воскресенье"
+            },
+            "order": {
+                "sum": 60500,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 6000,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "12, Пн",
+                "full": "12 июня, Понедельник"
+            },
+            "order": {
+                "sum": 60000,
+                "total": 3
+            },
+            "delivered": {
+                "sum": 5600,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "13, Вт",
+                "full": "13 июня, Вторник"
+            },
+            "order": {
+                "sum": 55500,
+                "total": 4
+            },
+            "delivered": {
+                "sum": 5200,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "14, Ср",
+                "full": "14 июня, Среда"
+            },
+            "order": {
+                "sum": 45000,
+                "total": 5
+            },
+            "delivered": {
+                "sum": 4800,
+                "total": 3
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "15, Чт",
+                "full": "15 июня, Четверг"
+            },
+            "order": {
+                "sum": 34500,
+                "total": 3
+            },
+            "delivered": {
+                "sum": 4400,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "16, Пт",
+                "full": "16 июня, Пятница"
+            },
+            "order": {
+                "sum": 4000,
+                "total": 4
+            },
+            "delivered": {
+                "sum": 4000,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "17, Сб",
+                "full": "17 июня, Суббота"
+            },
+            "order": {
+                "sum": 3500,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 3600,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "18, Вс",
+                "full": "18 июня, Воскресенье"
+            },
+            "order": {
+                "sum": 3000,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 3200,
+                "total": 6
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "19, Пн",
+                "full": "19 июня, Понедельник"
+            },
+            "order": {
+                "sum": 3500,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 2800,
+                "total": 6
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "20, Вт",
+                "full": "20 июня, Вторник"
+            },
+            "order": {
+                "sum": 2500,
+                "total": 2
+            },
+            "delivered": {
+                "sum": 2400,
+                "total": 4
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "21, Ср",
+                "full": "21 июня, Среда"
+            },
+            "order": {
+                "sum": 500,
+                "total": 13
+            },
+            "delivered": {
+                "sum": 2000,
+                "total": 1
+            }
+        },
+        {
+            "date": {
+                "abbreviated": "22, Чт",
+                "full": "22 июня, Четверг"
+            },
+            "order": {
+                "sum": 1000,
+                "total": 3
+            },
+            "delivered": {
+                "sum": 1600,
+                "total": 2
+            }
+        }
+    ],
+    "metadata": {
+        "id": "648fc7fa9d312622a371e328",
+        "private": false,
+        "createdAt": "2023-06-22T09:01:06.000Z"
+    }
+}
