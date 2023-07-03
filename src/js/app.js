@@ -349,14 +349,30 @@ document.addEventListener('DOMContentLoaded', () => {
             context.textAlign = 'right';
             context.fillText('0', canvas.width - 10, canvas.height - 46);
 
-            for (let i = 0; i < salesHistory.length; i++) {
-                let x = i * pointWidth + 40;
-                let y = canvas.height - (dataChartOrders[i] * pointHeightRatio) - 40;
-                salesHistory.length > 18 && i % 2 ? context.font = '0px Arial' : context.font = '12px Arial';
-                context.fillStyle = '#8d95a5';
-                context.textAlign = 'right';
-                context.fillText(salesHistory[i].date.abbreviated, x, canvas.height - 18);
+
+            if (salesHistory.length < 18) {
+                for (let i = 0; i < salesHistory.length; i++) {
+                    let x = i * pointWidth + 40;
+                    let y = canvas.height - (dataChartOrders[i] * pointHeightRatio) - 40;
+                    context.font = '12px Arial';
+                    context.fillStyle = '#8d95a5';
+                    context.textAlign = 'right';
+                    context.fillText(salesHistory[i].date.abbreviated, x, canvas.height - 18);
+                }
+            } else {
+                for (let i = 0; i < salesHistory.length; i++) {
+                    let x;
+                    let y = canvas.height - (dataChartOrders[i] * pointHeightRatio) - 40;
+                    if (i % 2 === 0) {
+                        x = i * pointWidth + 40;
+                        context.font = '12px Arial';
+                        context.fillStyle = '#8d95a5';
+                        context.textAlign = 'right';
+                        context.fillText(salesHistory[i].date.abbreviated, x, canvas.height - 18);
+                    }
+                }
             }
+
         }
 
         const animateChart = () => {
@@ -573,10 +589,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     footerHelpButton.addEventListener('click', showFooterMenu);
 
-    // !!!!!!!!!!!!!Получаем данные графика с бека!!!!!!!!!!!
     const getDataChart = async () => {
         try {
-            let response = await fetch('https://api.jsonbin.io/v3/b/648fc7fa9d312622a371e328');
+            let response = await fetch('data.json');
             if (response.ok) {
                 let result = response.json()
                     .then((result) => {
@@ -591,9 +606,111 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     }
-    getDataChart();
-    // !!!!!!!!!!!!!Получаем данные графика с бека!!!!!!!!!!!
+
+    const chart = document.querySelector('.chart ');
+
+    if (chart) {
+        getDataChart();
+    }
+
+
+    //------------------
+    const productsButtons = document.querySelectorAll('[data-products-button]');
+    const productsMenu = document.querySelectorAll('[data-products-menu]');
+    let activeProductsMenu = null;
+    let button = null;
+
+    const toggleMenu = () => {
+        productsMenu.forEach(item => {
+            if (activeProductsMenu !== item) {
+                item.classList.remove('active')
+            }
+        })
+        activeProductsMenu.classList.toggle('active');
+    }
+
+    const toggleButton = () => {
+        productsButtons.forEach(item => {
+            if (button !== item) {
+                item.classList.remove('active')
+            }
+        })
+        button.classList.toggle('active');
+    }
+
+    productsButtons.forEach(item => {
+        item.addEventListener('click', e => {
+            e.stopPropagation();
+            const parent = item.closest('[data-products-parent]')
+            activeProductsMenu = parent.querySelector('[data-products-menu]');
+            button = item;
+            toggleMenu();
+            toggleButton();
+        });
+    })
+
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        const menuIsActive = activeProductsMenu ? activeProductsMenu.classList.contains('active') : false;
+        const itsCatalog = target == activeProductsMenu || activeProductsMenu.contains(target);
+
+        if (menuIsActive && !activeProductsMenu.classList.contains('products-category__catalog')) {
+            toggleMenu();
+            toggleButton();
+        }
+        if (menuIsActive && activeProductsMenu.classList.contains('products-category__catalog') && !itsCatalog) {
+            toggleMenu();
+            toggleButton();
+        }
+    })
+
+    //----------------------------------------------
+    const searchPanels = document.querySelectorAll('[data-products-search]')
+
+    const activeSearchPanel = (searchPanels) => {
+        searchPanels.forEach(panel => {
+            const label = panel.querySelector('.products-search__label')
+            const input = panel.querySelector('.products-search__input')
+            input.addEventListener('focus', () => {
+                panel.classList.add('products-search__panel_focus')
+                label ? label.classList.add('products-search__label_focus') : false;
+            })
+
+            input.addEventListener('blur', () => {
+                panel.classList.remove('products-search__panel_focus')
+                label ? label.classList.remove('products-search__label_focus') : false
+            })
+        })
+    }
+
+    activeSearchPanel(searchPanels);
+
+    //----------------------------------------------------
+    const dropdowns = document.querySelectorAll('.products-category__button');
+
+    const toggleSubmenu = () => {
+        dropdowns.forEach(dropdown => {
+            const parent = dropdown.closest('.products-category__item')
+            const submenu = parent.querySelectorAll('ul');
+            dropdown.addEventListener('click', event => {
+                event.preventDefault();
+                if (event.currentTarget.closest('li') === parent || event.target === dropdown) {
+                    dropdown.classList.toggle('products-category__button_active');
+                    submenu.forEach(menu => {
+                        if (menu.parentNode === parent) {
+                            menu.classList.toggle('products-category__sub_active');
+                        }
+                    })
+                }
+            });
+        });
+    }
+    toggleSubmenu();
+
 });
+
+
+
 
 
 

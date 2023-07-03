@@ -238,17 +238,28 @@
 
     &__canvas {
         overflow: hidden;
+        max-width: rem(800);
     }
 
     &__charts {
         position: relative;
-        left: -30px;
+        right: 0px;
+        max-width: rem(800);
+        height: rem(194);
+    }
+
+    &__one {
+        position: absolute;
+        top: 0;
+        right: 0;
+        max-width: rem(830);
+        height: 100%;
     }
 
     &__hover {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         width: rem(830);
         height: 100%;
         cursor: pointer;

@@ -10,11 +10,11 @@
 }
 :focus,
 :active {
-	// outline: none;
+	outline: none;
 }
 a:focus,
 a:active {
-	// outline: none;
+	outline: none;
 }
 html,
 body {
@@ -74,6 +74,16 @@ a,
 canvas,
 button,
 .swiper-slide,
+input,
 label {
 	-webkit-tap-highlight-color: transparent;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
