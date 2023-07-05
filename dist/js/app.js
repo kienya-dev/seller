@@ -3048,7 +3048,7 @@
                 webP.onload = webP.onerror = function() {
                     callback(webP.height == 2);
                 };
-                webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+                webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSyggetProductsBox6WWgAA/veff/0PP8bA//LwYAAA";
             }
             testWebP((function(support) {
                 let className = support === true ? "webp" : "no-webp";
@@ -3513,77 +3513,449 @@
         };
         const chart = document.querySelector(".chart ");
         if (chart) getDataChart();
-        const productsButtons = document.querySelectorAll("[data-products-button]");
-        const productsMenu = document.querySelectorAll("[data-products-menu]");
-        let activeProductsMenu = null;
-        let button = null;
-        const toggleMenu = () => {
-            productsMenu.forEach((item => {
-                if (activeProductsMenu !== item) item.classList.remove("active");
+        const productsPage = document.querySelector(".page_products");
+        if (productsPage) {
+            let activeTab = document.querySelector(".tabs__box_active");
+            const productsButtons = document.querySelectorAll("[data-products-button]");
+            const productsMenu = document.querySelectorAll("[data-products-menu]");
+            const tableFirstCells = document.querySelectorAll(".products-table__cell_first");
+            const tableLastCells = document.querySelectorAll(".products-table__cell_last");
+            let productsBox = activeTab.querySelector(".products__box");
+            let activeProductsMenu = null;
+            let button = null;
+            const calcTableCardPosition = () => {
+                if (activeProductsMenu && activeProductsMenu.getAttribute("data-products-menu") === "table-menu") {
+                    if (productsBox.getBoundingClientRect().right - button.getBoundingClientRect().left < activeProductsMenu.getBoundingClientRect().width) activeProductsMenu.style.left = productsBox.getBoundingClientRect().right - activeProductsMenu.getBoundingClientRect().width + "px"; else if (button.getBoundingClientRect().left < 24) activeProductsMenu.style.left = productsBox.getBoundingClientRect().left + "px"; else activeProductsMenu.style.left = button.getBoundingClientRect().left + "px";
+                    if (window.innerHeight - button.getBoundingClientRect().bottom < activeProductsMenu.getBoundingClientRect().height + 20) activeProductsMenu.style.top = button.getBoundingClientRect().top - activeProductsMenu.getBoundingClientRect().height + "px"; else activeProductsMenu.style.top = button.getBoundingClientRect().bottom + "px";
+                    if (activeProductsMenu.getBoundingClientRect().top < 24) activeProductsMenu.style.top = 24 + "px";
+                    if (window.innerHeight - activeProductsMenu.getBoundingClientRect().bottom < 24) activeProductsMenu.style.top = window.innerHeight - activeProductsMenu.getBoundingClientRect().height - 24 + "px";
+                }
+            };
+            const toggleMenu = () => {
+                productsMenu.forEach((item => {
+                    if (activeProductsMenu !== item) item.classList.remove("active");
+                }));
+                activeProductsMenu.classList.toggle("active");
+                activeTab = document.querySelector(".tabs__box_active");
+                productsBox = activeTab.querySelector(".products__box");
+                calcTableCardPosition();
+            };
+            window.addEventListener("resize", (e => {
+                activeTab = document.querySelector(".tabs__box_active");
+                productsBox = activeTab.querySelector(".products__box");
+                calcTableCardPosition();
             }));
-            activeProductsMenu.classList.toggle("active");
-        };
-        const toggleButton = () => {
+            window.addEventListener("scroll", (function() {
+                activeTab = document.querySelector(".tabs__box_active");
+                productsBox = activeTab.querySelector(".products__box");
+                calcTableCardPosition();
+            }));
+            const getProductsBox = productsBox => {
+                productsBox.addEventListener("scroll", (e => {
+                    calcTableCardPosition();
+                    tableFirstCells.forEach((cell => {
+                        if (e.target.scrollLeft > 5) cell.classList.add("products-table__cell_highlight"); else cell.classList.remove("products-table__cell_highlight");
+                    }));
+                    tableLastCells.forEach((cell => {
+                        if (e.target.scrollWidth - e.target.scrollLeft - e.target.clientWidth > 5) cell.classList.add("products-table__cell_highlight"); else cell.classList.remove("products-table__cell_highlight");
+                    }));
+                }));
+            };
+            getProductsBox(productsBox);
+            const toggleButton = () => {
+                productsButtons.forEach((item => {
+                    if (button !== item) {
+                        item.classList.remove("active");
+                        item.classList.remove("products-table__cell_focus");
+                    }
+                }));
+                button.classList.toggle("active");
+                if (button.classList.contains("products-table__cell_last")) button.classList.toggle("products-table__cell_focus");
+            };
             productsButtons.forEach((item => {
-                if (button !== item) item.classList.remove("active");
-            }));
-            button.classList.toggle("active");
-        };
-        productsButtons.forEach((item => {
-            item.addEventListener("click", (e => {
-                e.stopPropagation();
-                const parent = item.closest("[data-products-parent]");
-                activeProductsMenu = parent.querySelector("[data-products-menu]");
-                button = item;
-                toggleMenu();
-                toggleButton();
-            }));
-        }));
-        document.addEventListener("click", (e => {
-            const target = e.target;
-            const menuIsActive = activeProductsMenu ? activeProductsMenu.classList.contains("active") : false;
-            const itsCatalog = target == activeProductsMenu || activeProductsMenu.contains(target);
-            if (menuIsActive && !activeProductsMenu.classList.contains("products-category__catalog")) {
-                toggleMenu();
-                toggleButton();
-            }
-            if (menuIsActive && activeProductsMenu.classList.contains("products-category__catalog") && !itsCatalog) {
-                toggleMenu();
-                toggleButton();
-            }
-        }));
-        const searchPanels = document.querySelectorAll("[data-products-search]");
-        const activeSearchPanel = searchPanels => {
-            searchPanels.forEach((panel => {
-                const label = panel.querySelector(".products-search__label");
-                const input = panel.querySelector(".products-search__input");
-                input.addEventListener("focus", (() => {
-                    panel.classList.add("products-search__panel_focus");
-                    label ? label.classList.add("products-search__label_focus") : false;
-                }));
-                input.addEventListener("blur", (() => {
-                    panel.classList.remove("products-search__panel_focus");
-                    label ? label.classList.remove("products-search__label_focus") : false;
-                }));
-            }));
-        };
-        activeSearchPanel(searchPanels);
-        const dropdowns = document.querySelectorAll(".products-category__button");
-        const toggleSubmenu = () => {
-            dropdowns.forEach((dropdown => {
-                const parent = dropdown.closest(".products-category__item");
-                const submenu = parent.querySelectorAll("ul");
-                dropdown.addEventListener("click", (event => {
-                    event.preventDefault();
-                    if (event.currentTarget.closest("li") === parent || event.target === dropdown) {
-                        dropdown.classList.toggle("products-category__button_active");
-                        submenu.forEach((menu => {
-                            if (menu.parentNode === parent) menu.classList.toggle("products-category__sub_active");
-                        }));
+                item.addEventListener("click", (e => {
+                    e.stopPropagation();
+                    const parent = item.closest("[data-products-parent]");
+                    const stockCard = e.target.closest(".stock-card");
+                    activeProductsMenu = parent.querySelector("[data-products-menu]");
+                    button = item;
+                    if (!stockCard) {
+                        toggleMenu();
+                        toggleButton();
+                    }
+                    if ((e.target.closest(".stock-card__close") || e.target.closest(".stock-card__button")) && stockCard) {
+                        toggleMenu();
+                        toggleButton();
                     }
                 }));
             }));
-        };
-        toggleSubmenu();
+            document.addEventListener("click", (e => {
+                if (activeProductsMenu) {
+                    const target = e.target;
+                    const menuIsActive = activeProductsMenu ? activeProductsMenu.classList.contains("active") : false;
+                    const itsCatalog = target == activeProductsMenu || activeProductsMenu.contains(target);
+                    if (menuIsActive && !activeProductsMenu.classList.contains("products-category__catalog")) {
+                        toggleMenu();
+                        toggleButton();
+                    }
+                    if (menuIsActive && activeProductsMenu.classList.contains("products-category__catalog") && !itsCatalog) {
+                        toggleMenu();
+                        toggleButton();
+                    }
+                }
+            }));
+            const productsDiscounts = document.querySelectorAll("[data-products-discount]");
+            productsDiscounts.forEach((product => {
+                const prompt = product.querySelector(".product-prompt_sale");
+                product.addEventListener("mouseover", (e => {
+                    if (prompt) {
+                        prompt.classList.add("active");
+                        prompt.style.top = product.getBoundingClientRect().top - prompt.getBoundingClientRect().height - 10 + "px";
+                        prompt.style.left = product.getBoundingClientRect().right - prompt.getBoundingClientRect().width + "px";
+                    }
+                }));
+                product.addEventListener("mouseout", (e => {
+                    if (prompt) prompt.classList.remove("active");
+                }));
+            }));
+            const productsIndexs = document.querySelectorAll("[data-products-index]");
+            productsIndexs.forEach((index => {
+                const parent = index.closest(".products-table__cell");
+                const popupData = parent.querySelector(".products-table__tooltip");
+                index.addEventListener("mouseover", (() => {
+                    if (popupData) {
+                        popupData.classList.add("active");
+                        popupData.style.top = index.getBoundingClientRect().top - popupData.getBoundingClientRect().height - 12 + "px";
+                        popupData.style.left = index.getBoundingClientRect().left + "px";
+                    }
+                }));
+                index.addEventListener("mouseout", (() => {
+                    if (popupData) popupData.classList.remove("active");
+                }));
+            }));
+            const productsTableInfoPopup = document.querySelectorAll("[data-table-info]");
+            productsTableInfoPopup.forEach((infoPopup => {
+                const parent = infoPopup.closest(".products-table__cell");
+                const popupData = parent.querySelector(".products-table__info");
+                parent.addEventListener("mouseover", (() => {
+                    if (popupData) {
+                        popupData.classList.add("active");
+                        popupData.style.top = infoPopup.getBoundingClientRect().top - popupData.getBoundingClientRect().height - 10 + "px";
+                        popupData.style.left = infoPopup.getBoundingClientRect().right - popupData.getBoundingClientRect().width + "px";
+                    }
+                }));
+                parent.addEventListener("mouseout", (() => {
+                    if (popupData) popupData.classList.remove("active");
+                }));
+            }));
+            const searchPanels = document.querySelectorAll("[data-products-search]");
+            const activeSearchPanel = searchPanels => {
+                searchPanels.forEach((panel => {
+                    const label = panel.querySelector(".products-search__label");
+                    const input = panel.querySelector(".products-search__input");
+                    input.addEventListener("focus", (() => {
+                        panel.classList.add("products-search__panel_focus");
+                        label ? label.classList.add("products-search__label_focus") : false;
+                    }));
+                    input.addEventListener("blur", (() => {
+                        panel.classList.remove("products-search__panel_focus");
+                        label ? label.classList.remove("products-search__label_focus") : false;
+                    }));
+                }));
+            };
+            activeSearchPanel(searchPanels);
+            const dropdowns = document.querySelectorAll(".products-category__button");
+            const toggleSubmenu = () => {
+                dropdowns.forEach((dropdown => {
+                    const parent = dropdown.closest(".products-category__item");
+                    const submenu = parent.querySelectorAll("ul");
+                    dropdown.addEventListener("click", (event => {
+                        event.preventDefault();
+                        if (event.currentTarget.closest("li") === parent || event.target === dropdown) {
+                            dropdown.classList.toggle("products-category__button_active");
+                            submenu.forEach((menu => {
+                                if (menu.parentNode === parent) menu.classList.toggle("products-category__sub_active");
+                            }));
+                        }
+                    }));
+                }));
+            };
+            toggleSubmenu();
+            const getSelectCategoryProducts = activeTab => {
+                const productsCatalogCategory = activeTab.querySelector("[data-products-category]");
+                const productsCatalogCheckboxes = productsCatalogCategory.querySelectorAll(".products-checkbox__input");
+                const productsCatalogButton = activeTab.querySelector(".products-search__button_select");
+                const productsCatalogCounter = productsCatalogButton.querySelector("span");
+                const productsCatalogRemove = activeTab.querySelector(".products-search__button_remove");
+                const productsCatalogReset = activeTab.querySelector("[data-products-reset]");
+                const productsCatalogApply = activeTab.querySelector("[data-products-apply]");
+                let selectCheckboxCounter = 0;
+                const setSelectCategory = () => {
+                    if (selectCheckboxCounter === 1) {
+                        productsCatalogCounter.innerHTML = `Выбрана ${selectCheckboxCounter} категория`;
+                        productsCatalogButton.classList.add("selected");
+                        productsCatalogRemove.classList.add("active");
+                        productsCatalogApply.classList.remove("products-search__button_disabled");
+                    } else if (selectCheckboxCounter > 1 && selectCheckboxCounter < 5) {
+                        productsCatalogCounter.innerHTML = `Выбрано ${selectCheckboxCounter} категории`;
+                        productsCatalogButton.classList.add("selected");
+                        productsCatalogRemove.classList.add("active");
+                        productsCatalogApply.classList.remove("products-search__button_disabled");
+                    } else if (selectCheckboxCounter > 1 && selectCheckboxCounter > 5) {
+                        productsCatalogCounter.innerHTML = `Выбрано ${selectCheckboxCounter} категорий`;
+                        productsCatalogButton.classList.add("selected");
+                        productsCatalogRemove.classList.add("active");
+                        productsCatalogApply.classList.remove("products-search__button_disabled");
+                    } else {
+                        productsCatalogCounter.innerHTML = `Выбрать категории`;
+                        productsCatalogButton.classList.remove("selected");
+                        productsCatalogRemove.classList.remove("active");
+                        productsCatalogApply.classList.add("products-search__button_disabled");
+                    }
+                };
+                productsCatalogRemove.addEventListener("click", (() => {
+                    productsCatalogCheckboxes.forEach((input => {
+                        input.checked = false;
+                        selectCheckboxCounter = 0;
+                        setSelectCategory();
+                    }));
+                }));
+                productsCatalogReset.addEventListener("click", (() => {
+                    productsCatalogCheckboxes.forEach((input => {
+                        input.checked = false;
+                        selectCheckboxCounter = 0;
+                        setSelectCategory();
+                    }));
+                }));
+                productsCatalogCheckboxes.forEach((checkbox => {
+                    checkbox.addEventListener("change", (e => {
+                        const parentList = checkbox.closest("ul");
+                        const catalogDirectory = checkbox.closest("[data-products-directory]");
+                        const checkboxes = catalogDirectory.querySelectorAll(".products-checkbox__input");
+                        const parentLabel = checkboxes[0].closest("label");
+                        const mainCheckbox = parentLabel.querySelector(".products-checkbox__custom");
+                        if (e.currentTarget.checked) if (parentList.classList.contains("products-category__sub")) {
+                            mainCheckbox.classList.add("products-checkbox__custom_parent");
+                            checkboxes.forEach((item => {
+                                if (item !== e.currentTarget && !item.checked) item.checked = true;
+                            }));
+                            selectCheckboxCounter += 1;
+                            setSelectCategory();
+                        } else {
+                            checkboxes.forEach((item => {
+                                if (item !== e.currentTarget && !item.checked) item.checked = true;
+                            }));
+                            selectCheckboxCounter += checkboxes.length - 1;
+                            setSelectCategory();
+                        } else {
+                            if (parentList.classList.contains("products-category__sub")) {
+                                mainCheckbox.classList.remove("products-checkbox__custom_parent");
+                                checkboxes.forEach((item => {
+                                    if (item !== e.currentTarget && item.checked) item.checked = false;
+                                }));
+                            } else {
+                                mainCheckbox.classList.remove("products-checkbox__custom_parent");
+                                checkboxes.forEach((item => {
+                                    if (item !== e.currentTarget && item.checked) item.checked = false;
+                                }));
+                            }
+                            selectCheckboxCounter = selectCheckboxCounter - (checkboxes.length - 1) < 0 ? 0 : selectCheckboxCounter - (checkboxes.length - 1);
+                            setSelectCategory();
+                        }
+                    }));
+                }));
+            };
+            getSelectCategoryProducts(activeTab);
+            const getProductsGallery = activeTab => {
+                const photosCheckboxes = activeTab.querySelectorAll("[data-checkbox-foto]");
+                photosCheckboxes.forEach((checkbox => {
+                    checkbox.addEventListener("change", (e => {
+                        if (e.currentTarget.checked) {
+                            const activeBox = e.currentTarget.getAttribute("data-checkbox-foto");
+                            if (activeBox === "gallery") {
+                                const images = activeTab.querySelectorAll(".products-table__image");
+                                images.forEach((image => {
+                                    image.classList.remove("products-table__image_hide");
+                                }));
+                            }
+                            if (activeBox === "colors") {
+                                const colors = activeTab.querySelectorAll(".products-table__images");
+                                colors.forEach((color => {
+                                    color.classList.remove("products-table__images_hide");
+                                }));
+                            }
+                        } else {
+                            const activeBox = e.currentTarget.getAttribute("data-checkbox-foto");
+                            if (activeBox === "gallery") {
+                                const images = activeTab.querySelectorAll(".products-table__image");
+                                images.forEach((image => {
+                                    if (!image.hasAttribute("data-products-avatar")) image.classList.add("products-table__image_hide");
+                                    if (image.classList.contains("products-table__image_none")) image.classList.remove("products-table__image_hide");
+                                }));
+                            }
+                            if (activeBox === "colors") {
+                                const colors = activeTab.querySelectorAll(".products-table__images_colors");
+                                colors.forEach((color => {
+                                    color.classList.add("products-table__images_hide");
+                                }));
+                            }
+                        }
+                    }));
+                }));
+            };
+            getProductsGallery(activeTab);
+            const getSelectProducts = activeTab => {
+                const productCheckBoxes = activeTab.querySelectorAll(".products-table__cell_first  .products-checkbox__input");
+                const productCellsLasts = activeTab.querySelectorAll(".products-table__cell_last");
+                const productSelectCaption = activeTab.querySelector(".products-select__caption > span");
+                const codeMainCostumCheckParent = productCheckBoxes[0].closest(".products-checkbox");
+                const codeMainCostumCheckbox = codeMainCostumCheckParent.querySelector(".products-checkbox__custom");
+                const productsSelectPanel = activeTab.querySelector(".products-select");
+                const productsCategoryButtons = activeTab.querySelector(".products-category");
+                const clearSelectProducts = activeTab.querySelector(".products-select__button");
+                const productsButtonDownload = document.querySelector(".products-add__button_download");
+                const productActionBox = activeTab.querySelector(".products-search__action-box");
+                let productSelectCounter = 0;
+                const setSelectProduct = () => {
+                    if (productSelectCounter) {
+                        searchPanels[0].style.display = "none";
+                        productsCategoryButtons.style.display = "none";
+                        productsSelectPanel.style.display = "flex";
+                        productsButtonDownload.style.display = "none";
+                        productActionBox.style.display = "block";
+                        productSelectCaption.innerHTML = productSelectCounter;
+                        productCellsLasts.forEach((cell => {
+                            const locked = cell.querySelector(".products-table__locked");
+                            const more = cell.querySelector(".products-table__more");
+                            if (locked) {
+                                locked.style.display = "block";
+                                more.style.display = "none";
+                                cell.style["pointer-events"] = "none";
+                            }
+                        }));
+                    } else {
+                        searchPanels[0].style.display = "";
+                        productsSelectPanel.style.display = "";
+                        productsCategoryButtons.style.display = "";
+                        productsButtonDownload.style.display = "";
+                        productActionBox.style.display = "";
+                        codeMainCostumCheckbox.classList.remove("products-checkbox__custom_parent");
+                        productCheckBoxes.forEach((checkbox => {
+                            checkbox.checked = false;
+                        }));
+                        productCellsLasts.forEach((cell => {
+                            const locked = cell.querySelector(".products-table__locked");
+                            const more = cell.querySelector(".products-table__more");
+                            if (locked) {
+                                locked.style.display = "";
+                                more.style.display = "";
+                                cell.style["pointer-events"] = "";
+                            }
+                        }));
+                    }
+                };
+                productCheckBoxes[0].addEventListener("change", (e => {
+                    if (e.currentTarget.checked) {
+                        codeMainCostumCheckbox.classList.remove("products-checkbox__custom_parent");
+                        productCheckBoxes.forEach((checkbox => {
+                            checkbox.checked = true;
+                        }));
+                        productSelectCounter = productCheckBoxes.length - 1;
+                    } else {
+                        productCheckBoxes.forEach((checkbox => {
+                            checkbox.checked = false;
+                        }));
+                        productSelectCounter = 0;
+                    }
+                    setSelectProduct();
+                }));
+                productCheckBoxes.forEach(((checkbox, index) => {
+                    checkbox.addEventListener("change", (e => {
+                        if (e.currentTarget.checked && index !== 0) {
+                            codeMainCostumCheckbox.classList.add("products-checkbox__custom_parent");
+                            productCheckBoxes[0].checked = true;
+                            ++productSelectCounter;
+                            setSelectProduct();
+                        } else if (index !== 0) {
+                            codeMainCostumCheckbox.classList.add("products-checkbox__custom_parent");
+                            --productSelectCounter;
+                            setSelectProduct();
+                        }
+                    }));
+                }));
+                clearSelectProducts.addEventListener("click", (() => {
+                    productCheckBoxes.forEach((checkbox => {
+                        checkbox.checked = false;
+                        productSelectCounter = 0;
+                        setSelectProduct();
+                    }));
+                }));
+            };
+            getSelectProducts(activeTab);
+            class Tabs {
+                constructor(attr, className) {
+                    this.tabs = document.querySelectorAll(`[${attr}]`);
+                    if (this.tabs.length) {
+                        this.buttons = document.querySelectorAll(`[${attr}] [${attr}-button]`);
+                        this.attr = attr;
+                        this.className = className;
+                        this.events();
+                    }
+                }
+                events() {
+                    this.buttons.forEach((button => {
+                        button.addEventListener("click", (e => {
+                            this.toggler(e.target.closest(`[${this.attr}]`), e.currentTarget);
+                        }));
+                    }));
+                }
+                toggler(tabs, activeTab) {
+                    const buttons = tabs.querySelectorAll(`[${this.attr}-button]`);
+                    const boxes = tabs.querySelectorAll(`[${this.attr}-box]`);
+                    buttons.forEach(((button, idx) => {
+                        if (button !== activeTab) {
+                            buttons[idx].classList.remove(`${this.className}__button_active`);
+                            buttons[idx].classList.remove("products-panel__button_active");
+                            boxes[idx].classList.remove(`${this.className}__box_active`);
+                        } else {
+                            buttons[idx].classList.add(`${this.className}__button_active`);
+                            buttons[idx].classList.add("products-panel__button_active");
+                            boxes[idx].classList.add(`${this.className}__box_active`);
+                            activeTab = document.querySelector(".tabs__box_active");
+                            productsBox = activeTab.querySelector(".products__box");
+                            getProductsBox(productsBox);
+                            calcTableCardPosition();
+                            getProductsGallery(activeTab);
+                            getSelectProducts(activeTab);
+                            getSelectCategoryProducts(activeTab);
+                        }
+                    }));
+                }
+            }
+            new Tabs("data-tabs", "tabs");
+            const customSelects = document.querySelectorAll(".custom-select");
+            if (customSelects.length) customSelects.forEach((selectWrapper => {
+                const selectedOption = selectWrapper.querySelector(".selected-option");
+                const optionsList = selectWrapper.querySelector(".options");
+                const hiddenSelect = selectWrapper.querySelector(".hidden-select");
+                selectedOption.addEventListener("click", (() => {
+                    optionsList.style.display = optionsList.style.display === "none" ? "block" : "none";
+                }));
+                optionsList.querySelectorAll("li").forEach((option => {
+                    option.addEventListener("click", (() => {
+                        selectedOption.querySelector("span").textContent = option.textContent;
+                        hiddenSelect.value = option.dataset.value;
+                        hiddenSelect.dispatchEvent(new Event("change"));
+                        optionsList.style.display = "none";
+                    }));
+                }));
+                hiddenSelect.addEventListener("change", (() => {
+                    selectedOption.querySelector("span").textContent = hiddenSelect.options[hiddenSelect.selectedIndex].textContent;
+                }));
+                document.addEventListener("click", (event => {
+                    if (!selectWrapper.contains(event.target)) optionsList.style.display = "none";
+                }));
+            }));
+        }
     }));
 })();

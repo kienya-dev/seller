@@ -42,3 +42,12 @@
     width: 100%;
     display: block;
 }
+
+.tabs {
+    &__box {
+        display: none;
+        &_active {
+            display: block;
+        }
+    }
+}
