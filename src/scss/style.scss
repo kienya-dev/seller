@@ -75,6 +75,10 @@ $responsiveType: 1;
 		background-color: #f5f7fa;
 	}
 
+	&_payments {
+		background-color: #f5f7fa;
+	}
+
 	&__title {
 		line-height: 1.25;
 		font-size: rem(32);
@@ -115,3 +119,4 @@ $responsiveType: 1;
 // Подключение стилей отдельных страниц
 @import "home";
 @import "products";
+@import "payments";

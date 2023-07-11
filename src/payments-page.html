@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Выплаты"
+})
+
+<body class="preload">
+    <div class="wrapper">
+        @@include('html/_header.htm',{})
+        <main class="page page_payments">
+            <section class="payments">
+                <div class="payments__body" data-tabs-payments>
+
+                    <div class="payments__head">
+                        <h1 class="payments__title">Выплаты</h1>
+
+                        <div class="show-count">
+                            <div class="custom-select payments__select">
+                                <div class="selected-option payments__selected">
+                                    <span>МП ИР-153139/23 от 25.04.2023</span>
+                                    <svg class="icon">
+                                        <use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+                                    </svg>
+                                </div>
+                                <ul class="options payments__options" style="display: none;">
+                                    <li data-value="МП ИР-153139/23 от 25.04.2023" data-tabs-payments-button>
+                                        МП ИР-153139/23 от 25.04.2023
+                                    </li>
+                                    <!-- Тестовый элемент (удалить) -->
+                                    <li data-value="МП тест-тест от 11.07.2023" data-tabs-payments-button>
+                                        МП тест-тест от 11.07.2023
+                                    </li>
+                                    <!-- Тестовый элемент (удалить) -->
+                                </ul>
+                                <select class="hidden-select">
+                                    <option value="МП ИР-153139/23 от 25.04.2023">
+                                        МП ИР-153139/23 от 25.04.2023
+                                    </option>
+                                    <!-- Тестовый элемент (удалить) -->
+                                    <option value="МП тест-тест от 11.07.2023">
+                                        МП тест-тест от 11.07.2023
+                                    </option>
+                                    <!-- Тестовый элемент (удалить) -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payments__content">
+                        <div class="payments__filter payments-filter">
+                            <div class="show-count">
+                                <div class="custom-select payments-filter__select">
+                                    <div class="selected-option payments-filter__selected">
+                                        <span>Все счета</span>
+                                        <svg class="icon payments-filter__icon">
+                                            <use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+                                        </svg>
+                                    </div>
+                                    <ul class="options" style="display: none;">
+                                        <li data-value="Все счета">Все счета</li>
+                                        <li data-value="Ожидают оплаты">Ожидают оплаты</li>
+                                        <li data-value="Оплаченные">Оплаченные</li>
+                                    </ul>
+                                    <select class="hidden-select">
+                                        <option value="Все счета">Все счета</option>
+                                        <option value="Ожидают оплаты">Ожидают оплаты</option>
+                                        <option value="Оплаченные">Оплаченные</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="payments-filter__dates">
+                                <label class="payments-filter__date">
+                                    <input type="text" value="10.04.2023" class="payments-filter__input">
+                                </label>
+                                <span class="payments-filter__separator"></span>
+                                <label class="payments-filter__date" class="payments-filter__input">
+                                    <input type="text" value="10.04.2023" class="payments-filter__input">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="payments__main">
+                            <div class="payments__box payments__box_active" data-tabs-payments-box>
+                                <table class="payments-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Статус</span>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="planned-date">
+                                                    <span>Планируемая дата</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Номер счета</span>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="payment-sum">
+                                                    <span>Сумма</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="payment-date">
+                                                    <span>Дата выплаты</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Номер документа оплаты</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Ожидает оплаты</span>
+                                                <span class="payments-table__clue">Доступен для досрочной выплаты</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>14.07.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>3908497</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>21 264 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>–</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>–</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплачен</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>23.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>20230601</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>4 244 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>22.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплата комиссии №849601</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплачен</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>15.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>3756400</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>1 884 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>14.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплата комиссии №546487</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Тестовый элемент (удалить) -->
+                            <div class="payments__box" data-tabs-payments-box>
+                                <table class="payments-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Статус</span>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="planned-date">
+                                                    <span>Планируемая дата</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Номер счета</span>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="payment-sum">
+                                                    <span>Сумма</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <button class="payments-table__button" data-button-sort="payment-date">
+                                                    <span>Дата выплаты</span>
+                                                    <svg class="icon payments-table__arrow">
+                                                        <use xlink:href="img/icons/sprite.svg#i-products-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                            </th>
+                                            <th class="payments-table__cell payments-table__cell_caption">
+                                                <span>Номер документа оплаты</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Ожидает оплаты (тест тест)</span>
+                                                <span class="payments-table__clue">Доступен для досрочной выплаты (тест
+                                                    тест)</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>14.07.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>21 264 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>–</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплачен (тест тест)</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>23.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>4 244 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>22.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="payments-table__row">
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>Оплачен (тест тест)</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>15.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                            <td
+                                                class="payments-table__cell payments-table__cell_content payments-table__cell_sum">
+                                                <span>1 884 ₽</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>14.06.2023</span>
+                                            </td>
+                                            <td class="payments-table__cell payments-table__cell_content">
+                                                <span>(тест тест)</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Тестовый элемент (удалить) -->
+
+                        </div>
+                        <div class="payments__bottom">
+                            <div class="show-count">
+                                <span class="show-count__label">Кол-во строк:</span>
+                                <div class="custom-select cart-form__field">
+                                    <div class="selected-option">
+                                        <span>5</span>
+                                        <svg class="icon">
+                                            <use xlink:href="img/icons/sprite.svg#i-arrow-slider"></use>
+                                        </svg>
+                                    </div>
+                                    <ul class="options" style="display: none;">
+                                        <li data-value="5">5</li>
+                                        <li data-value="10">10</li>
+                                        <li data-value="15">15</li>
+                                        <li data-value="20">20</li>
+                                        <li data-value="30">30</li>
+                                        <li data-value="50">50</li>
+                                    </ul>
+                                    <select class="hidden-select">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        @@include('html/_footer-2.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+</body>
+
+</html>

@@ -614,7 +614,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    //------------------
+    const sortCellButtons = document.querySelectorAll('[data-button-sort]');
+    let dataActiveSort = '';
+    let isActiveSortUp = false;
+
+    const highlightIconCellButton = (activeButton) => {
+        sortCellButtons.forEach(button => {
+            const icon = button.querySelector('svg');
+            if (button === activeButton && icon.classList.contains('highlight')) {
+                icon.classList.toggle('active');
+                isActiveSortUp = !isActiveSortUp;
+            } else {
+                icon.classList.remove('active');
+            }
+            isActiveSortUp && button === activeButton ? icon.classList.add('active') : icon.classList.remove('active');
+            button === activeButton ? icon.classList.add('highlight') : icon.classList.remove('highlight');
+        })
+    }
+
+    sortCellButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const parent = e.target.closest('label');
+            if (!(parent && parent.classList.contains('products-checkbox'))) {
+                dataActiveSort = button.getAttribute('data-button-sort');
+                highlightIconCellButton(button);
+            }
+        })
+    })
+
 
     const productsPage = document.querySelector('.page_products');
 
@@ -655,8 +683,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-
-
         const toggleMenu = () => {
             productsMenu.forEach(item => {
                 if (activeProductsMenu !== item) {
@@ -678,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         window.addEventListener('scroll', function () {
-            activeTab = document.querySelector('.tabs__box_active')
+            activeTab = document.querySelector('.tabs__box_active');
             productsBox = activeTab.querySelector('.products__box');
             calcTableCardPosition();
         })
@@ -708,6 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         getProductsBox(productsBox);
 
+
         const toggleButton = () => {
             productsButtons.forEach(item => {
                 if (button !== item) {
@@ -718,16 +745,16 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.toggle('active');
 
             if (button.classList.contains('products-table__cell_last')) {
-                button.classList.toggle('products-table__cell_focus')
+                button.classList.toggle('products-table__cell_focus');
             }
-
         }
+
 
         productsButtons.forEach(item => {
             item.addEventListener('click', e => {
                 e.stopPropagation();
                 const parent = item.closest('[data-products-parent]');
-                const stockCard = e.target.closest('.stock-card')
+                const stockCard = e.target.closest('.stock-card');
                 activeProductsMenu = parent.querySelector('[data-products-menu]');
                 button = item;
 
@@ -741,6 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         })
+
 
         document.addEventListener('click', (e) => {
             if (activeProductsMenu) {
@@ -760,7 +788,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
 
-        //---------------------
 
         const productsDiscounts = document.querySelectorAll('[data-products-discount]')
 
@@ -768,7 +795,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const prompt = product.querySelector('.product-prompt_sale');
             product.addEventListener('mouseover', (e) => {
                 if (prompt) {
-                    prompt.classList.add('active')
+                    prompt.classList.add('active');
                     prompt.style.top = product.getBoundingClientRect().top - prompt.getBoundingClientRect().height - 10 + 'px';
                     prompt.style.left = product.getBoundingClientRect().right - prompt.getBoundingClientRect().width + 'px';
                 }
@@ -781,7 +808,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
 
-        //--------------------
 
         const productsIndexs = document.querySelectorAll('[data-products-index]');
 
@@ -805,7 +831,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
 
-        //---------------------------
         const productsTableInfoPopup = document.querySelectorAll('[data-table-info]');
 
         productsTableInfoPopup.forEach(infoPopup => {
@@ -827,10 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
 
-        //--------------------------
 
-
-        //----------------------------------------------
         const searchPanels = document.querySelectorAll('[data-products-search]')
 
         const activeSearchPanel = (searchPanels) => {
@@ -851,7 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activeSearchPanel(searchPanels);
 
-        //----------------------------------------------------
+
         const dropdowns = document.querySelectorAll('.products-category__button');
 
         const toggleSubmenu = () => {
@@ -873,9 +895,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         toggleSubmenu();
 
-
-
-        //-------------------------------------------------------
 
         const getSelectCategoryProducts = (activeTab) => {
             const productsCatalogCategory = activeTab.querySelector('[data-products-category]');
@@ -1026,7 +1045,6 @@ document.addEventListener('DOMContentLoaded', () => {
         getProductsGallery(activeTab);
 
 
-
         const getSelectProducts = (activeTab) => {
             const productCheckBoxes = activeTab.querySelectorAll('.products-table__cell_first  .products-checkbox__input');
             const productCellsLasts = activeTab.querySelectorAll('.products-table__cell_last')
@@ -1123,6 +1141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         getSelectProducts(activeTab);
 
+
         class Tabs {
             constructor(attr, className) {
                 this.tabs = document.querySelectorAll(`[${attr}]`);
@@ -1164,48 +1183,162 @@ document.addEventListener('DOMContentLoaded', () => {
                         getSelectCategoryProducts(activeTab);
                     }
                 });
+                const buttonsDateCreated = activeTab.querySelector(`[data-button-sort=${dataActiveSort}]`);
+                highlightIconCellButton(buttonsDateCreated);
             }
         }
 
-        //Tabs
         new Tabs("data-tabs", "tabs");
+        dataActiveSort = 'date-created';
+        const buttonsDateCreated = activeTab.querySelector('[data-button-sort="date-created"]');
+        highlightIconCellButton(buttonsDateCreated);
+    }
 
+    // Costum Select ========================================================================================================================================================================================================================================================
+    const customSelects = document.querySelectorAll('.custom-select');
 
+    const calcPositionSelect = (select, options) => {
+        const optionsHeight = options.getBoundingClientRect().height;
+        const selectPosition = select.getBoundingClientRect().bottom;
+        return window.innerHeight - selectPosition > (optionsHeight + 20) ? 'bottom' : 'top';
+    }
 
-        // Costum Select ========================================================================================================================================================================================================================================================
+    if (customSelects.length) {
+        customSelects.forEach(selectWrapper => {
+            const selectedOption = selectWrapper.querySelector('.selected-option');
+            const optionsList = selectWrapper.querySelector('.options');
+            const hiddenSelect = selectWrapper.querySelector('.hidden-select');
 
-        const customSelects = document.querySelectorAll('.custom-select');
+            selectedOption.addEventListener('click', () => {
+                optionsList.style.display = optionsList.style.display === 'none' ? 'block' : 'none';
+                optionsList.style.display === 'block' ? selectedOption.classList.add('active') : selectedOption.classList.remove('active');
+                if (optionsList.style.display === 'block') {
+                    optionsList.classList.add(calcPositionSelect(selectedOption, optionsList))
+                } else {
+                    optionsList.classList.remove('top');
+                    optionsList.classList.remove('bottom');
+                }
+            });
 
-        if (customSelects.length) {
-            customSelects.forEach(selectWrapper => {
-                const selectedOption = selectWrapper.querySelector('.selected-option');
-                const optionsList = selectWrapper.querySelector('.options');
-                const hiddenSelect = selectWrapper.querySelector('.hidden-select');
+            optionsList.querySelectorAll('li').forEach(option => {
+                if (option.textContent.trim() === selectedOption.querySelector('span').textContent.trim()) {
+                    option.classList.add('active');
+                    option.classList.add('highlight');
+                }
+                option.addEventListener('click', () => {
+                    selectedOption.querySelector('span').textContent = option.textContent;
+                    hiddenSelect.value = option.dataset.value;
+                    hiddenSelect.dispatchEvent(new Event('change'));
+                    optionsList.style.display = 'none';
+                    selectedOption.classList.remove('active');
+                    optionsList.classList.remove('top');
+                    optionsList.classList.remove('bottom');
 
-                selectedOption.addEventListener('click', () => {
-                    optionsList.style.display = optionsList.style.display === 'none' ? 'block' : 'none';
+                    optionsList.querySelectorAll('li').forEach(option => {
+                        if (option.textContent.trim() === selectedOption.querySelector('span').textContent.trim()) {
+                            option.classList.add('active');
+                            option.classList.add('highlight');
+                        } else {
+                            option.classList.remove('active');
+                            option.classList.remove('highlight');
+                        }
+                    })
                 });
 
-                optionsList.querySelectorAll('li').forEach(option => {
-                    option.addEventListener('click', () => {
-                        selectedOption.querySelector('span').textContent = option.textContent;
-                        hiddenSelect.value = option.dataset.value;
-                        hiddenSelect.dispatchEvent(new Event('change'));
-                        optionsList.style.display = 'none';
-                    });
-                });
+                optionsList.addEventListener('mouseover', () => {
+                    optionsList.querySelectorAll('li').forEach(option => {
+                        option.classList.remove('highlight');
+                    })
+                })
+                optionsList.addEventListener('mouseout', () => {
+                    optionsList.querySelectorAll('li').forEach(option => {
+                        if (option.classList.contains('active')) {
+                            option.classList.add('highlight');
+                        }
+                    })
+                })
+            });
 
-                hiddenSelect.addEventListener('change', () => {
-                    selectedOption.querySelector('span').textContent = hiddenSelect.options[hiddenSelect.selectedIndex].textContent;
-                });
+            hiddenSelect.addEventListener('change', () => {
+                selectedOption.querySelector('span').textContent = hiddenSelect.options[hiddenSelect.selectedIndex].textContent;
+            });
 
-                document.addEventListener('click', (event) => {
-                    if (!selectWrapper.contains(event.target)) {
-                        optionsList.style.display = 'none';
+            document.addEventListener('click', (event) => {
+                if (!selectWrapper.contains(event.target)) {
+                    optionsList.style.display = 'none';
+                    selectedOption.classList.remove('active');
+                    optionsList.classList.remove('top');
+                    optionsList.classList.remove('bottom');
+                }
+            });
+        });
+    }
+
+
+    const paymentsPage = document.querySelector('.page_payments');
+
+    if (paymentsPage) {
+        const filtersInput = document.querySelectorAll('.payments-filter__input');
+        let activePaymentsTab = document.querySelector('.payments__box_active');
+
+        if (filtersInput.length) {
+            const highlightFilterInput = (input) => {
+                const parent = input.closest('.payments-filter__date');
+                parent.classList.toggle('active');
+            }
+
+            filtersInput.forEach(input => {
+                input.addEventListener('focus', () => highlightFilterInput(input));
+            })
+
+            filtersInput.forEach(input => {
+                input.addEventListener('blur', () => highlightFilterInput(input));
+            })
+        }
+
+
+        class PaymentsTabs {
+            constructor(attr, className) {
+                this.tabs = document.querySelectorAll(`[${attr}]`);
+
+                if (this.tabs.length) {
+                    this.buttons = document.querySelectorAll(`[${attr}] [${attr}-button]`);
+                    this.attr = attr;
+                    this.className = className;
+                    this.events();
+                }
+            }
+
+            events() {
+                this.buttons.forEach((button) =>
+                    button.addEventListener("click", (e) =>
+                        this.toggler(e.target.closest(`[${this.attr}]`), e.currentTarget)
+                    )
+                );
+            }
+
+            toggler(tabs, activeTab) {
+                const buttons = tabs.querySelectorAll(`[${this.attr}-button]`);
+                const boxes = tabs.querySelectorAll(`[${this.attr}-box]`);
+                buttons.forEach((button, idx) => {
+                    if (button !== activeTab) {
+                        buttons[idx].classList.remove(`${this.className}__button_active`);
+                        boxes[idx].classList.remove(`${this.className}__box_active`);
+                    } else {
+                        buttons[idx].classList.add(`${this.className}__button_active`);
+                        boxes[idx].classList.add(`${this.className}__box_active`);
+                        const buttonDatePlaned = boxes[idx].querySelector(`[data-button-sort=${dataActiveSort}]`);
+                        highlightIconCellButton(buttonDatePlaned);
                     }
                 });
-            });
+            }
         }
+
+
+        new PaymentsTabs('data-tabs-payments', 'payments');
+        dataActiveSort = 'planned-date';
+        const buttonDatePlaned = activePaymentsTab.querySelector('[data-button-sort="planned-date"]');
+        highlightIconCellButton(buttonDatePlaned);
     }
 })
 
