@@ -18,15 +18,16 @@
     &__head {
         display: flex;
         align-items: end;
-        column-gap: rem(20);
-        margin-bottom: rem(28);
+        column-gap: rem(17);
+        margin-bottom: rem(27);
     }
 
     &__select {
-        width: rem(287);
+        width: rem(294);
     }
 
     &__selected {
+        padding-right: rem(28);
         border: none !important;
         color: #172133;
 
@@ -47,7 +48,7 @@
     }
 
     &__filter {
-        padding: rem(15) rem(16);
+        padding: rem(16);
     }
 
     &__main {
@@ -62,7 +63,7 @@
     }
 
     &__bottom {
-        padding: rem(10) rem(24) rem(15);
+        padding: rem(11) rem(24) rem(17);
     }
 }
 
@@ -192,6 +193,12 @@
         }
         &_sum {
             font-size: rem(15);
+            font-variant-numeric: tabular-nums;
+
+            span {
+                position: relative;
+                top: rem(2);
+            }
         }
     }
 
@@ -226,6 +233,9 @@
     &__clue {
         display: inline-block;
         padding-top: rem(1);
+        font-size: rem(13);
+        letter-spacing: 0;
+        font-variant-numeric: tabular-nums;
         color: #8d95a5;
     }
 }

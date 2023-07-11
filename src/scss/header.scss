@@ -26,15 +26,16 @@
 
 	&__nav-item {
 		position: relative;
+		padding-bottom: rem(3);
 		&:not(:first-child) > .header__link {
-			padding: 0 rem(10);
+			padding: 0 rem(12);
 			span {
 				padding: rem(11) 0;
 			}
 		}
 
 		&:first-child > .header__link {
-			padding-right: rem(10);
+			padding-right: rem(12);
 
 			span {
 				padding: rem(11) 0;
@@ -94,7 +95,9 @@
 		column-gap: rem(18);
 		padding: rem(19) rem(16) rem(18);
 		border-radius: rem(16);
-		box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 0 2px rgb(0, 0, 0, 0.12);
+		box-shadow:
+			0 8px 16px -2px rgba(0, 0, 0, 0.12),
+			0 0 2px rgb(0, 0, 0, 0.12);
 		background-color: #ffffff;
 	}
 
@@ -167,7 +170,9 @@
 			height: rem(20);
 			fill: currentColor;
 			transform: rotate(-90deg);
-			transition: transform 0.15s, fill 0.3s;
+			transition:
+				transform 0.15s,
+				fill 0.3s;
 		}
 	}
 
@@ -201,7 +206,9 @@
 		right: rem(8);
 		padding-top: rem(12);
 		visibility: hidden;
-		transition: visibility 0.15s, top 0.15s;
+		transition:
+			visibility 0.15s,
+			top 0.15s;
 	}
 
 	&__list {
@@ -212,7 +219,9 @@
 		border-radius: 8px;
 		z-index: 9;
 		background-color: #ffffff;
-		box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 0 2px rgb(0, 0, 0, 0.12);
+		box-shadow:
+			0 8px 16px -2px rgba(0, 0, 0, 0.12),
+			0 0 2px rgb(0, 0, 0, 0.12);
 	}
 
 	&__link {
@@ -242,7 +251,9 @@
 		left: rem(-40);
 		z-index: 9;
 		visibility: hidden;
-		transition: visibility 0.15s, top 0.15s;
+		transition:
+			visibility 0.15s,
+			top 0.15s;
 	}
 
 	&__content {
@@ -250,7 +261,9 @@
 		max-width: rem(250);
 		padding: rem(8) 0;
 		border-radius: 8px;
-		box-shadow: 0 8px 16px -2px rgb(0, 0, 0, 0.12), 0 0 2px rgb(0, 0, 0, 0.12);
+		box-shadow:
+			0 8px 16px -2px rgb(0, 0, 0, 0.12),
+			0 0 2px rgb(0, 0, 0, 0.12);
 		background-color: #ffffff;
 	}
 
@@ -344,7 +357,9 @@
 	top: rem(-14);
 	visibility: hidden;
 	z-index: 10;
-	transition: visibility 0.15s, left 0.05s;
+	transition:
+		visibility 0.15s,
+		left 0.05s;
 
 	&__inner {
 		padding-right: rem(10);
@@ -380,13 +395,17 @@
 		right: rem(-10);
 		padding-top: rem(8);
 		visibility: hidden;
-		transition: visibility 0.15s, top 0.15s;
+		transition:
+			visibility 0.15s,
+			top 0.15s;
 	}
 
 	&__list {
 		padding: rem(8) 0;
 		border-radius: 8px;
-		box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 0 2px rgb(0, 0, 0, 0.12);
+		box-shadow:
+			0 8px 16px -2px rgba(0, 0, 0, 0.12),
+			0 0 2px rgb(0, 0, 0, 0.12);
 		background-color: #ffffff;
 	}
 

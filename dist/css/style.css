@@ -343,10 +343,11 @@ textarea {
 
 .header__nav-item {
   position: relative;
+  padding-bottom: 0.1875rem;
 }
 
 .header__nav-item:not(:first-child) > .header__link {
-  padding: 0 0.625rem;
+  padding: 0 0.75rem;
 }
 
 .header__nav-item:not(:first-child) > .header__link span {
@@ -354,7 +355,7 @@ textarea {
 }
 
 .header__nav-item:first-child > .header__link {
-  padding-right: 0.625rem;
+  padding-right: 0.75rem;
 }
 
 .header__nav-item:first-child > .header__link span {
@@ -4233,6 +4234,10 @@ textarea {
   opacity: 1;
 }
 
+.selected-option span {
+  padding-left: 0.1875rem;
+}
+
 .options {
   position: absolute;
   left: 0;
@@ -4318,17 +4323,18 @@ textarea {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
-  -webkit-column-gap: 1.25rem;
-     -moz-column-gap: 1.25rem;
-          column-gap: 1.25rem;
-  margin-bottom: 1.75rem;
+  -webkit-column-gap: 1.0625rem;
+     -moz-column-gap: 1.0625rem;
+          column-gap: 1.0625rem;
+  margin-bottom: 1.6875rem;
 }
 
 .payments__select {
-  width: 17.9375rem;
+  width: 18.375rem;
 }
 
 .payments__selected {
+  padding-right: 1.75rem;
   border: none !important;
   color: #172133;
 }
@@ -4351,7 +4357,7 @@ textarea {
 }
 
 .payments__filter {
-  padding: 0.9375rem 1rem;
+  padding: 1rem;
 }
 
 .payments__box {
@@ -4363,7 +4369,7 @@ textarea {
 }
 
 .payments__bottom {
-  padding: 0.625rem 1.5rem 0.9375rem;
+  padding: 0.6875rem 1.5rem 1.0625rem;
 }
 
 .payments-filter {
@@ -4513,6 +4519,12 @@ textarea {
 
 .payments-table__cell_sum {
   font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.payments-table__cell_sum span {
+  position: relative;
+  top: 0.125rem;
 }
 
 .payments-table__button {
@@ -4552,6 +4564,9 @@ textarea {
 .payments-table__clue {
   display: inline-block;
   padding-top: 0.0625rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
   color: #8d95a5;
 }
 
