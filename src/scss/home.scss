@@ -71,7 +71,9 @@
     z-index: 99;
     border-radius: 8px;
     background-color: #ffffff;
-    box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 0 2px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 8px 16px -2px rgba(0, 0, 0, 0.12),
+        0 0 2px rgba(0, 0, 0, 0.12);
 
     &_active {
         display: flex;
@@ -185,7 +187,9 @@
         z-index: 12;
         border-radius: 18px;
         transform: rotate(180deg);
-        transition: opacity 0.3s, visibility 0.3s;
+        transition:
+            opacity 0.3s,
+            visibility 0.3s;
         background: linear-gradient(-45deg, #eff2f6, #ededed, #ffffff, #eff2f6);
         background-size: 400% 400%;
         animation: gradient 5s ease infinite;
@@ -359,7 +363,9 @@
     opacity: 0;
     font-size: rem(15);
     transform: translate(-50%, -100%);
-    transition: opacity 0.1s, left 0.15s;
+    transition:
+        opacity 0.1s,
+        left 0.15s;
     pointer-events: none;
     white-space: nowrap;
     &_active {
@@ -896,7 +902,9 @@
         left: 50%;
         transform: translate(-50%, -100%);
         opacity: 0;
-        transition: opacity 0.15s, visibility 0.15s;
+        transition:
+            opacity 0.15s,
+            visibility 0.15s;
         visibility: hidden;
     }
 
@@ -961,7 +969,9 @@
         transform: translate(-50%, -100%);
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.15s, visibility 0.15s;
+        transition:
+            opacity 0.15s,
+            visibility 0.15s;
     }
 
     &:hover {

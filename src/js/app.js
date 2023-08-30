@@ -179,16 +179,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const thisDate = new Date();
             const thisDay = thisDate.getDay() || 7;
             salesHistory = chartData.slice(chartData.length - thisDay, chartData.length);
+
+            if (thisDate.getDay()) {
+                salesHistory.unshift({ date: { abbreviated: '', full: '' }, order: chartData[chartData.length - (thisDay + 1)].order, delivered: chartData[chartData.length - (thisDay + 1)].delivered });
+            } else {
+                salesHistory.unshift({ date: { abbreviated: '', full: '' }, order: chartData[chartData.length - 8].order, delivered: chartData[chartData.length - 8].delivered });
+            }
         } else {
             salesHistory = chartData.slice(chartData.length - interval, chartData.length);
+            if (+interval < 28) {
+                salesHistory.unshift({ date: { abbreviated: '', full: '' }, order: chartData[chartData.length - (+interval + 1)].order, delivered: chartData[chartData.length - (+interval + 1)].delivered });
+            } else {
+                const orderSum = chartData[0].order.sum / 100 * 120;
+                const orderTotal = chartData[0].order.total / 100 * 120;
+                const deliveredSum = chartData[0].delivered.sum / 100 * 120;
+                const deliveredTotal = chartData[0].delivered.total / 100 * 120;
+                salesHistory.unshift({ date: { abbreviated: '', full: '' }, order: { sum: orderSum, total: orderTotal }, delivered: { sum: deliveredSum, total: deliveredTotal } });
+            }
         }
+        salesHistory.push({ date: { abbreviated: '', full: '' }, order: { sum: 0, total: 0 }, delivered: { sum: 0, total: 0 } });
 
-        salesHistory.push({ date: { abbreviated: '', full: '' }, order: { sum: 0, total: 0 }, delivered: { sum: 0, total: 0 } })
-        salesHistory.unshift({ date: { abbreviated: '', full: '' }, order: { sum: 0, total: 0 }, delivered: { sum: 0, total: 0 } })
-
-        showDateInterval(salesHistory);
-        showHistorySales(salesHistory, what);
-
+        showDateInterval(salesHistory.slice(1));
+        showHistorySales(salesHistory.slice(1), what);
 
         // ========================================================================================================================================================================================================================================================
         // CANVAS  ============================================================================================================================================================================================================================================================================================================
@@ -259,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let prevX = (i - 1) * pointWidth + 20;
                 let prevY = canvas.height - (dataChartDelivery[i - 1] * pointHeightRatio) - 40;
                 let controlPointX1 = (prevX + x) / 2;
-                let controlPointY1 = prevY;
+                let controlPointY1 = i === 0 ? 0 : prevY;
                 let controlPointX2 = (prevX + x) / 2;
                 let controlPointY2 = y;
                 context.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, x, y);
@@ -591,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getDataChart = async () => {
         try {
-            let response = await fetch('data.json');
+            let response = await fetch('https://api.jsonbin.io/v3/b/648fc7fa9d312622a371e328');
             if (response.ok) {
                 let result = response.json()
                     .then((result) => {
@@ -612,6 +624,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chart) {
         getDataChart();
     }
+
+    //---------------------------------------------------------
 
 
     const sortCellButtons = document.querySelectorAll('[data-button-sort]');
