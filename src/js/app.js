@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getDataChart = async () => {
         try {
-            let response = await fetch('https://api.jsonbin.io/v3/b/648fc7fa9d312622a371e328');
+            let response = await fetch('data.json');
             if (response.ok) {
                 let result = response.json()
                     .then((result) => {
